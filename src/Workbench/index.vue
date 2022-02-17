@@ -12,7 +12,8 @@
               <Sidebar :data="sidebar" @change="sidebarChange" />
             </div>
             <div class="main">
-              <split-pane :left="200" resizer-type="line" :resizer-style="{background:'none'}">
+              <split-pane :left="left" min="1" resizer-type="line"
+                :resizer-style="{background:'none'}">
                 <div slot="left" class="pane left" v-if="currentComponents">
                   <slot name="sidebar">
                     <component :is="currentComponents" v-bind="currentSidebar"
@@ -69,16 +70,21 @@ export default {
       currentComponents: "",
       currentSidebar: "",
       widgets: {},
+      left: 1,
     };
   },
   computed: {},
-  watch: {
-  },
+  watch: {},
   methods: {
     sidebarChange(item) {
-      console.log(item);
       this.currentComponents = item?.components || "";
       this.currentSidebar = item || "";
+      if (!this.currentComponents) {
+        this.left = 1;
+      } else {
+        this.left = 200;
+      }
+
       this.$emit("changeSidebar");
     },
     onWidgetActivatedEvent(event) {

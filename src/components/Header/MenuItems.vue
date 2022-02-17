@@ -34,15 +34,15 @@ export default {
   methods: {
     mouseenter(e, item, index) {
       e.stopPropagation();
-      if (item.submenu) {
+      if (item?.submenu) {
         this.isOpen = item.title + index;
       }
     },
     subMclick(e, item) {
-      if (item.submenu) {
+      if (item?.submenu) {
         e.stopPropagation();
       }
-      if (item.click && typeof item.click === "function")
+      if (item?.click && typeof item.click === "function")
         return item.click(item);
     },
   },

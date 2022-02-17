@@ -47,6 +47,12 @@ export default {
     resizerClass: String,
     resizerStyle: Object,
   },
+  watch: {
+    left() {
+      this.readValue()
+    }
+
+  },
   computed: {
     isHorizontal() {
       return this.direction === "horizontal";
