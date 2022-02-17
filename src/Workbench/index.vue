@@ -21,7 +21,7 @@
                   </slot>
                 </div>
                 <div slot="right" class="pane right" @drop="drop($event)" @dragover.prevent>
-                  <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent">
+                  <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
                     v-on:lumino:activated="onWidgetActivatedEvent" tab-title-prop="tab-title">
                     <slot></slot>
                   </Lumino>
