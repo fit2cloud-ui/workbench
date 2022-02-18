@@ -95,7 +95,7 @@ export default {
           hotkey: "⇧⌘E",
           components: ResourceManage,
           click: (item) => {
-            this.onAddHelloWorldButtonClicked(item);
+            this.onAddClicked(item);
           },
           dragstart: (item) => {
             this.dragElement = item;
@@ -104,16 +104,19 @@ export default {
         {
           icon: "iconfont icon-fangdajing",
           name: "搜索",
+          components: ResourceManage,
         },
         {
           icon: "iconfont icon-git-branch",
           name: "源代码管理",
           hotkey: "⌃⇧G",
+          components: ResourceManage,
         },
         {
           icon: "iconfont icon-yingyongguanli",
           name: "扩展",
           hotkey: "⇧⌘X",
+          components: ResourceManage,
         },
         {
           icon: "iconfont icon-zhanghaoguanli",
@@ -132,17 +135,16 @@ export default {
   },
   mounted() {
     // this.$nextTick(() => {
-    //   this.onAddHelloWorldButtonClicked();
+    //   this.onAddClicked();
     // });
   },
   computed: {
     helloWorldWidgets() {
       const widgets = [];
-      for (const [id, item] of Object.entries(this.widgets)) {
+      for (const item of Object.values(this.widgets)) {
         // if (type === HelloWorld.name) {
         // widgets.push(id);
         // }
-        console.log(id);
         widgets.push(item);
       }
       return widgets;
@@ -150,14 +152,13 @@ export default {
   },
   methods: {
     drop() {
-      this.onAddHelloWorldButtonClicked(this.dragElement);
+      this.onAddClicked(this.dragElement);
     },
-    onAddHelloWorldButtonClicked(item) {
+    onAddClicked(item) {
       // const id = `${new Date().getTime()}`;
       // eslint-disable-next-line no-console
       // console.log(`Adding new widget ${item.name}, ID ${id}`);
       this.$set(this.widgets, item.id, item);
-      console.log(this.widgets);
       this.dragElement = "";
     },
     onWidgetActivatedEvent(event) {

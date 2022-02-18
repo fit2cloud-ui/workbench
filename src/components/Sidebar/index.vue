@@ -11,8 +11,7 @@
           </li>
         </ul>
       </div>
-
-      <!-- <div class="monaco-action-bar vertical">
+      <div class="monaco-action-bar vertical">
         <ul class="actions-container">
            <li class="action-item" :class="isCheck===`bottom${index}`? 'checked' :''"
             v-for="(item, index) in bottomData" :key="index" draggable="true"
@@ -21,7 +20,7 @@
               <i :class="item.icon"></i></a>
           </li>
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

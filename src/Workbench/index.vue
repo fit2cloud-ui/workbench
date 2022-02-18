@@ -96,6 +96,9 @@ export default {
     drop(event) {
       this.$emit("drop", event);
     },
+    // activate(){
+    //   this.$refs.lumino.activateWidget()
+    // }
   },
 };
 </script>

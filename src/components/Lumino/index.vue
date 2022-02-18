@@ -124,6 +124,7 @@ export default {
       this.widgets.push(id);
       const luminoWidget = new LuminoWidget(id, name, /* closable */ true);
       this.dock.addWidget(luminoWidget);
+      this.dock.activateWidget(luminoWidget);
       // give time for Lumino's widget DOM element to be created
       this.$nextTick(() => {
         document
@@ -135,8 +136,19 @@ export default {
       });
     },
 
+    // /**
+    //  * Activate a widget.
+    //  *
+    //  * @param id {String} - widget ID
+    //  * @param name {String} - widget name
+    //  */
+    // activateWidget(id, name) {
+    //   const luminoWidget = new LuminoWidget(id, name, /* closable */ true);
+    //   this.dock.activateWidget(luminoWidget);
+    // },
+
     /**
-     * React to a deleted event.
+     * React to a activated event.
      *
      * @param customEvent {
      *   detail: {

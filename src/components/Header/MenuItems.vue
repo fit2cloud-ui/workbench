@@ -65,7 +65,7 @@ export default {
     background: #141414;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
     position: absolute;
-    top: 0%;
+    top: -5px;
     left: 20px;
     padding: 5px 10px;
   }
