@@ -40,8 +40,19 @@ export default {
       isExpanded: 0,
       files: [
         {
-          id: "HelloWorld",
-          name: "HelloWorld",
+          id: "HelloWorld1",
+          name: "HelloWorld1",
+          components: "HelloWorld",
+        },
+        {
+          id: "HelloWorld2",
+          name: "HelloWorld2",
+          components: "HelloWorld",
+        },
+        {
+          id: "HelloWorld3",
+          name: "HelloWorld3",
+          components: "HelloWorld",
         },
       ],
     };

@@ -193,7 +193,7 @@ $font-size-root: 13px;
       border-top: none;
       position: relative;
       overflow: auto;
-      top: 35px !important;
+      margin-top: 11px;
     }
     .p-TabBar,
     .lm-TabBar {
@@ -234,6 +234,35 @@ $font-size-root: 13px;
 
         .p-TabBar-tabCloseIcon:before {
           content: "X";
+        }
+      }
+    }
+    .p-DockPanel-handle:before,
+    .lm-DockPanel-handle:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: #444444;
+    }
+    .p-DockPanel-handle[data-orientation="horizontal"]:before,
+    .lm-DockPanel-handle[data-orientation="horizontal"]:before {
+      left: 0;
+      width: 1px;
+    }
+    .p-DockPanel-handle[data-orientation="vertical"]:before,
+    .lm-DockPanel-handle[data-orientation="vertical"]:before {
+      top: 100%;
+      height: 1px;
+    }
+    .p-DockPanel-handle,
+    .lm-DockPanel-handle {
+      &:hover {
+        background: #1471af;
+        &::before {
+          background: none;
         }
       }
     }

@@ -49,9 +49,8 @@ export default {
   },
   watch: {
     left() {
-      this.readValue()
-    }
-
+      this.readValue();
+    },
   },
   computed: {
     isHorizontal() {
@@ -270,6 +269,13 @@ export default {
     position: absolute;
     background: #dcdee2;
     z-index: 1;
+
+    &:hover {
+      background: #1471af !important;
+      &.is-horizontal {
+        width: 4px;
+      }
+    }
 
     &.is-horizontal {
       width: 1px;

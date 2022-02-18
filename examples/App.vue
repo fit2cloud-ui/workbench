@@ -2,8 +2,9 @@
   <div id="app">
     <workbench :title="title" :app-menu="menu" :sidebar="sidebar"
       @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop">
-      <HelloWorld v-for="id of this.helloWorldWidgets" :key="id" :id="id">
-      </HelloWorld>
+      <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
+        :is="item.components" :tab-title="item.name">
+      </component>
       <div slot="footer">
         <Footer />
       </div>
@@ -94,13 +95,11 @@ export default {
           hotkey: "⇧⌘E",
           components: ResourceManage,
           click: (item) => {
-            console.log(item);
             this.onAddHelloWorldButtonClicked(item);
           },
-          dragstart: (item)=> {
-            this.dragElement = item
-
-          }
+          dragstart: (item) => {
+            this.dragElement = item;
+          },
         },
         {
           icon: "iconfont icon-fangdajing",
@@ -139,25 +138,27 @@ export default {
   computed: {
     helloWorldWidgets() {
       const widgets = [];
-      for (const [id, type] of Object.entries(this.widgets)) {
-        if (type === HelloWorld.name) {
-          widgets.push(id);
-        }
+      for (const [id, item] of Object.entries(this.widgets)) {
+        // if (type === HelloWorld.name) {
+        // widgets.push(id);
+        // }
+        console.log(id);
+        widgets.push(item);
       }
       return widgets;
     },
   },
   methods: {
     drop() {
-      this.onAddHelloWorldButtonClicked(this.dragElement)
+      this.onAddHelloWorldButtonClicked(this.dragElement);
     },
     onAddHelloWorldButtonClicked(item) {
-      const id = `${new Date().getTime()}`;
+      // const id = `${new Date().getTime()}`;
       // eslint-disable-next-line no-console
-      console.log(`Adding new widget ${item.name}, ID ${id}`);
-      this.$set(this.widgets, id, item.name);
+      // console.log(`Adding new widget ${item.name}, ID ${id}`);
+      this.$set(this.widgets, item.id, item);
       console.log(this.widgets);
-      this.dragElement = ""
+      this.dragElement = "";
     },
     onWidgetActivatedEvent(event) {
       console.log(`Activated widget ${event.id}`);
