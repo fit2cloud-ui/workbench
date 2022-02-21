@@ -1,5 +1,6 @@
 <template>
-  <footer class="statusbar" id="workbench.statusbar">
+  <footer class="statusbar" id="workbench.statusbar" :class="footerClass"
+    :style="{...footerStyle}">
     <slot></slot>
   </footer>
 </template>
@@ -7,6 +8,10 @@
 <script>
 export default {
   name: "Footer",
+  props: {
+    footerClass: String,
+    footerStyle: Object,
+  },
 };
 </script>
 

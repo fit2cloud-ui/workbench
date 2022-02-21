@@ -23,12 +23,8 @@
 
 <script>
 import myLogo from "../../assets/logo.png";
-import MenuItems from "./MenuItems.vue";
 export default {
   name: "Header",
-  components: {
-    MenuItems,
-  },
   props: {
     logo: {
       type: String,

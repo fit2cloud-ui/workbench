@@ -122,11 +122,35 @@ export default {
           icon: "iconfont icon-zhanghaoguanli",
           name: "帐户",
           location: "bottom",
+          type: "popover",
+          submenu: [
+            {
+              title: "文件",
+              hotkey: "Ctrl N",
+            },
+            {
+              title: "窗口",
+            },
+          ],
         },
         {
           icon: "iconfont icon-shezhi-xianxing",
           name: "管理",
           location: "bottom",
+          type: "popover",
+          submenu: [
+            {
+              title: "文件",
+              hotkey: "Ctrl N",
+            },
+            {
+              title: "窗口",
+              divided: true,
+            },
+            {
+              title: "新建窗口",
+            },
+          ],
         },
       ],
       dragElement: "",
