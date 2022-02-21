@@ -1,27 +1,31 @@
 <template>
   <div class="sidebar">
-    <div class="content">
-      <div class="composite-bar">
-        <ul class="actions-container">
-          <li class="action-item" :class="isCheck===`top${index}`? 'checked' :''"
-            v-for="(item, index) in topData" :key="index" draggable="true"
-            @click="handleClick(item, `top${index}`)">
-            <a :title="getName(item)">
-              <i :class="item.icon"></i></a>
-          </li>
-        </ul>
+    <slot name="sidebar">
+      <div class="content">
+        <div class="top-bar">
+          <ul class="actions-container">
+            <li class="action-item" :class="isCheck===`top${index}`? 'checked' :''"
+              v-for="(item, index) in topData" :key="index" draggable="true"
+              @click="handleClick(item, `top${index}`)">
+              <a :title="getName(item)">
+                <i :class="item.icon"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom-bar">
+          <slot name="sidebar-bottom">
+            <ul class="actions-container">
+              <li class="action-item" :class="isCheck===`bottom${index}`? 'checked' :''"
+                v-for="(item, index) in bottomData" :key="index" draggable="true"
+                @click="handleClick(item, `bottom${index}`)">
+                <a :title="getName(item)">
+                  <i :class="item.icon"></i></a>
+              </li>
+            </ul>
+          </slot>
+        </div>
       </div>
-      <div class="monaco-action-bar vertical">
-        <ul class="actions-container">
-           <li class="action-item" :class="isCheck===`bottom${index}`? 'checked' :''"
-            v-for="(item, index) in bottomData" :key="index" draggable="true"
-            @click="handleClick(item, `bottom${index}`)">
-            <a :title="getName(item)">
-              <i :class="item.icon"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </slot>
   </div>
 </template>
 

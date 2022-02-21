@@ -9,13 +9,18 @@
         <div class="split-view-view" style="top: 35px">
           <div class="split-view-container">
             <div class="split-view-view">
-              <Sidebar :data="sidebar" @change="sidebarChange" />
+              <Sidebar :data="sidebar" @change="sidebarChange">
+                <slot name="sidebar">
+                </slot>
+                <slot name="sidebar-bottom">
+                </slot>
+              </Sidebar>
             </div>
             <div class="main">
               <split-pane :left="left" min="1" resizer-type="line"
                 :resizer-style="{background:'none'}">
                 <div slot="left" class="pane left" v-if="currentComponents">
-                  <slot name="sidebar">
+                  <slot name="sidebar-component">
                     <component :is="currentComponents" v-bind="currentSidebar"
                       v-on="currentSidebar"></component>
                   </slot>
