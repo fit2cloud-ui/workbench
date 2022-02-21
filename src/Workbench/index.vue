@@ -18,7 +18,7 @@
             </div>
             <div class="main">
               <split-pane :left="left" min="1" resizer-type="line"
-                :resizer-style="{background:'none'}">
+                :resizer-style="{background:'none'}" local-key="workbench-split">
                 <div slot="left" class="pane left" v-if="currentComponents">
                   <slot name="sidebar-component">
                     <component :is="currentComponents" v-bind="currentSidebar"
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="split-view-view bottom">
-          <Footer>
+          <Footer :footerClass="footerClass" :footerStyle="footerStyle">
             <slot name="footer">
             </slot>
           </Footer>
@@ -53,8 +53,10 @@
 <script>
 import "@/styles/index.scss";
 import "@/components";
+
 /* ions */
 import "@/assets/iconfont/iconfont.css";
+
 import "@lumino/default-theme/style/index.css";
 export default {
   name: "Workbench",
@@ -69,7 +71,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    footerClass: String,
+    footerStyle: Object,
   },
+
   data() {
     return {
       currentComponents: "",
@@ -82,12 +87,14 @@ export default {
   watch: {},
   methods: {
     sidebarChange(item) {
-      this.currentComponents = item?.components || "";
-      this.currentSidebar = item || "";
-      if (!this.currentComponents) {
-        this.left = 1;
-      } else {
-        this.left = 200;
+      if (item.type !== "popover") {
+        this.currentComponents = item?.components || "";
+        this.currentSidebar = item || "";
+        if (!this.currentComponents) {
+          this.left = 1;
+        } else {
+          this.left = localStorage.getItem("Fu-SP-workbench-split") || 200;
+        }
       }
 
       this.$emit("changeSidebar");
