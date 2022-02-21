@@ -8,12 +8,9 @@
         <h3 class="title">{{item.title}}</h3>
       </div>
       <div class="pane-content">
-        <ul>
-          <li v-for="(item, index) in files" :key="index" draggable="true"
-            @click="click($event, item)" @dragstart="dragstart($event, item)">
-            <span>{{item.name}}</span>
-          </li>
-        </ul>
+        <el-tree class="tree" :data="data" :props="defaultProps" @node-click="handleNodeClick"
+          draggable @node-drag-start="handleDragStart">
+        </el-tree>
 
       </div>
     </div>
@@ -38,33 +35,71 @@ export default {
         // },
       ],
       isExpanded: 0,
-      files: [
+      data: [
         {
-          id: "HelloWorld1",
-          name: "HelloWorld1",
-          components: "HelloWorld",
+          name: "一级 1",
+          children: [
+            {
+              name: "二级 1-1",
+              children: [
+                {
+                  id: "1-1-1",
+                  name: "三级 1-1-1",
+                  components: "HelloWorld",
+                },
+              ],
+            },
+          ],
         },
         {
-          id: "HelloWorld2",
-          name: "HelloWorld2",
-          components: "HelloWorld",
+          name: "一级 2",
+          children: [
+            {
+              id: "2-1",
+              name: "二级 2-1",
+              components: "HelloWorld",
+            },
+            {
+              id: "2-2",
+              name: "二级 2-2",
+              components: "HelloWorld",
+            },
+          ],
         },
         {
-          id: "HelloWorld3",
-          name: "HelloWorld3",
-          components: "HelloWorld",
+          name: "一级 3",
+          children: [
+            {
+              name: "二级 3-1",
+              children: [
+                {
+                  id: "3-1-1",
+                  name: "三级 3-1-1",
+                  components: "HelloWorld",
+                },
+              ],
+            },
+          ],
         },
       ],
+      defaultProps: {
+        children: "children",
+        label: "name",
+      },
     };
   },
   methods: {
-    click(e, item) {
-      e.stopPropagation();
-      this.$emit("click", item);
+    handleNodeClick(data) {
+      if (data?.components) {
+        this.$emit("click", data);
+      }
     },
-    dragstart(e, item) {
-      e.stopPropagation();
-      this.$emit("dragstart", item);
+
+    handleDragStart(node) {
+      console.log(node);
+      if (node?.data?.components) {
+        this.$emit("dragstart", node.data);
+      }
     },
     handleExpanded(index) {
       this.isExpanded = this.isExpanded === index ? "" : index;
@@ -98,6 +133,10 @@ export default {
     .pane-content {
       padding-left: 12px;
       line-height: 25px;
+    }
+    .tree {
+      background: none;
+      color: #999999;
     }
   }
 }
