@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <workbench :title="title" :app-menu="menu" :sidebar="sidebar"
+    <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar"
       @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name">
@@ -95,7 +95,7 @@ export default {
           hotkey: "⇧⌘E",
           components: ResourceManage,
           click: (item) => {
-            this.onAddClicked(item);
+            this.onClicked(item);
           },
           dragstart: (item) => {
             this.dragElement = item;
@@ -176,13 +176,14 @@ export default {
   },
   methods: {
     drop() {
-      this.onAddClicked(this.dragElement);
+      this.onClicked(this.dragElement);
     },
-    onAddClicked(item) {
-      // const id = `${new Date().getTime()}`;
-      // eslint-disable-next-line no-console
-      // console.log(`Adding new widget ${item.name}, ID ${id}`);
-      this.$set(this.widgets, item.id, item);
+    onClicked(item) {
+      if (Object.keys(this.widgets).indexOf(item.id) >= 0) {
+        this.$refs.workbench.activate(item);
+      } else {
+        this.$set(this.widgets, item.id, item);
+      }
       this.dragElement = "";
     },
     onWidgetActivatedEvent(event) {

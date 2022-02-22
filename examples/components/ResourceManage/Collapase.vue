@@ -9,7 +9,7 @@
       </div>
       <div class="pane-content">
         <el-tree class="tree" :data="data" :props="defaultProps" @node-click="handleNodeClick"
-          draggable @node-drag-start="handleDragStart">
+          draggable @node-drag-start="handleDragStart" :highlight-current="true">
         </el-tree>
 
       </div>
@@ -136,8 +136,16 @@ export default {
     }
     .tree {
       background: none;
-      color: #999999;
+      color: #d8d7d7;
+      font-weight: bold;
     }
   }
+}
+::v-deep
+  .el-tree--highlight-current
+  .el-tree-node.is-current
+  > .el-tree-node__content {
+  background: none;
+  color: rgba(219, 132, 18, 0.8);
 }
 </style>

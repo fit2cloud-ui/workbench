@@ -108,9 +108,10 @@ export default {
     drop(event) {
       this.$emit("drop", event);
     },
-    // activate(){
-    //   this.$refs.lumino.activateWidget()
-    // }
+    activate(item){
+      const {id, name} = item
+      this.$refs.lumino.activateWidget(id, name)
+    }
   },
 };
 </script>
@@ -120,7 +121,7 @@ export default {
   color: #cccccc;
   font-size: 13px;
   line-height: 1.4em;
-  height: 100vh;
+  height: 100%;
   .grid-view {
     overflow: hidden;
     position: relative;
