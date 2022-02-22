@@ -12,15 +12,14 @@
               <Sidebar :data="sidebar" @change="sidebarChange">
                 <slot name="sidebar">
                 </slot>
-                <slot name="sidebar-bottom">
-                </slot>
               </Sidebar>
+
             </div>
             <div class="main">
               <split-pane :left="left" min="1" resizer-type="line"
                 :resizer-style="{background:'none'}" local-key="workbench-split">
-                <div slot="left" class="pane left" v-if="currentComponents">
-                  <slot name="sidebar-component">
+                <div slot="left" class="pane left">
+                  <slot name="sidebar-components">
                     <component :is="currentComponents" v-bind="currentSidebar"
                       v-on="currentSidebar"></component>
                   </slot>
@@ -83,18 +82,23 @@ export default {
       left: 1,
     };
   },
-  computed: {},
   watch: {},
+  updated() {
+    this.isShowLeft();
+  },
   methods: {
+    isShowLeft() {
+      if (this.$slots["sidebar-components"] || this.currentComponents) {
+        this.left = localStorage.getItem("Fu-SP-workbench-split") || 200;
+      } else {
+        this.left = 1;
+      }
+    },
     sidebarChange(item) {
       if (item.type !== "popover") {
         this.currentComponents = item?.components || "";
         this.currentSidebar = item || "";
-        if (!this.currentComponents) {
-          this.left = 1;
-        } else {
-          this.left = localStorage.getItem("Fu-SP-workbench-split") || 200;
-        }
+        this.isShowLeft()
       }
 
       this.$emit("changeSidebar");
@@ -108,10 +112,10 @@ export default {
     drop(event) {
       this.$emit("drop", event);
     },
-    activate(item){
-      const {id, name} = item
-      this.$refs.lumino.activateWidget(id, name)
-    }
+    activate(item) {
+      const { id, name } = item;
+      this.$refs.lumino.activateWidget(id, name);
+    },
   },
 };
 </script>

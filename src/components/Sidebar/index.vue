@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <slot name="sidebar">
+    <slot>
       <div class="content">
         <div class="top-bar">
           <ul class="actions-container">
@@ -31,24 +31,15 @@
           </ul>
         </div>
         <div class="bottom-bar">
-          <slot name="sidebar-bottom">
-            <ul class="actions-container">
-              <template v-for="(item, index) in bottomData">
-                <popper v-if="item.type==='popover'" trigger="clickToOpen"
-                  :options="{ placement: 'right' }" :key="index">
-                  <div class="sidebar-popover">
-                    <menu-items :data="item.submenu" />
-                  </div>
-                  <li class="action-item" slot="reference"
-                    :class="getClassName(item, `bottom${index}`)" draggable="true"
-                    @click="handleClick(item, `bottom${index}`)">
 
-                    <a :title="getName(item)">
-                      <i :class="item.icon"></i></a>
-
-                  </li>
-                </popper>
-                <li v-else :key="index" class="action-item" slot="reference"
+          <ul class="actions-container">
+            <template v-for="(item, index) in bottomData">
+              <popper v-if="item.type==='popover'" trigger="clickToOpen"
+                :options="{ placement: 'right' }" :key="index">
+                <div class="sidebar-popover">
+                  <menu-items :data="item.submenu" />
+                </div>
+                <li class="action-item" slot="reference"
                   :class="getClassName(item, `bottom${index}`)" draggable="true"
                   @click="handleClick(item, `bottom${index}`)">
 
@@ -56,9 +47,18 @@
                     <i :class="item.icon"></i></a>
 
                 </li>
-              </template>
-            </ul>
-          </slot>
+              </popper>
+              <li v-else :key="index" class="action-item" slot="reference"
+                :class="getClassName(item, `bottom${index}`)" draggable="true"
+                @click="handleClick(item, `bottom${index}`)">
+
+                <a :title="getName(item)">
+                  <i :class="item.icon"></i></a>
+
+              </li>
+            </template>
+          </ul>
+
         </div>
       </div>
     </slot>
@@ -122,6 +122,7 @@ export default {
   width: 48px;
   height: calc(100vh - 57px);
   overflow: auto;
+  box-sizing: border-box;
   .content {
     display: flex;
     flex-direction: column;

@@ -53,7 +53,7 @@ export default {
   mounted() {
     let that = this;
     document.addEventListener("click", function (e) {
-      if (!that.$refs.menu.contains(e.target)) {
+      if (!that.$refs.menu?.contains(e.target)) { 
         that.isOpen = "";
       }
     });
