@@ -41,16 +41,6 @@ export default {
     change(item) {
       this.$emit("change", item);
     },
-    // getClassName(item, index) {
-    //   if (this.isCheck === index) {
-    //     return item.type === "popover" ? "" : "checked";
-    //   } else {
-    //     return "";
-    //   }
-    // },
-    // getName(item) {
-    //   return item?.name + (item?.hotkey ? `(${item.hotkey})` : "");
-    // },
   },
 };
 </script>

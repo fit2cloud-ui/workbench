@@ -99,7 +99,7 @@ export default {
         this.isShowLeft()
       }
 
-      this.$emit("changeSidebar");
+      this.$emit("changeSidebar", item);
     },
     onWidgetActivatedEvent(event) {
       this.$emit("activated", event);

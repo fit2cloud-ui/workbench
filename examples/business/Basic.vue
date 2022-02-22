@@ -28,16 +28,16 @@ export default {
       title: "欢迎使用 JumpServer",
       menu: [
         {
-          title: "用法",
+          name: "用法",
           submenu: [
             {
-              title: "基本用法",
+              name: "基本用法",
               click: () => {
                 this.$router.push("/");
               },
             },
             {
-              title: "自定义用法",
+              name: "自定义用法",
               click: () => {
                 this.$router.push("/custom");
               },
@@ -45,31 +45,31 @@ export default {
           ],
         },
         {
-          title: "文件",
+          name: "文件",
           submenu: [
             {
-              title: "新建文件",
+              name: "新建文件",
               hotkey: "Ctrl N",
               click: (data) => {
                 console.log(data);
               },
             },
             {
-              title: "新建窗口",
+              name: "新建窗口",
               divided: true,
             },
             {
-              title: "自动保存",
+              name: "自动保存",
               isSet: true,
             },
             {
-              title: "首选项",
+              name: "首选项",
               submenu: [
                 {
-                  title: "设置",
+                  name: "设置",
                   submenu: [
                     {
-                      title: "设置1",
+                      name: "设置1",
                     },
                   ],
                 },
@@ -78,28 +78,28 @@ export default {
           ],
         },
         {
-          title: "编辑",
+          name: "编辑",
         },
         {
-          title: "查看",
+          name: "查看",
           submenu: [
             {
-              title: "文件",
+              name: "文件",
               hotkey: "Ctrl N",
             },
             {
-              title: "窗口",
+              name: "窗口",
             },
           ],
         },
         {
-          title: "运行",
+          name: "运行",
         },
         {
-          title: "终端",
+          name: "终端",
         },
         {
-          title: "帮助",
+          name: "帮助",
         },
       ],
       sidebar: [
@@ -139,11 +139,11 @@ export default {
           type: "popover",
           submenu: [
             {
-              title: "文件",
+              name: "文件",
               hotkey: "Ctrl N",
             },
             {
-              title: "窗口",
+              name: "窗口",
             },
           ],
         },
@@ -154,15 +154,15 @@ export default {
           type: "popover",
           submenu: [
             {
-              title: "文件",
+              name: "文件",
               hotkey: "Ctrl N",
             },
             {
-              title: "窗口",
+              name: "窗口",
               divided: true,
             },
             {
-              title: "新建窗口",
+              name: "新建窗口",
             },
           ],
         },

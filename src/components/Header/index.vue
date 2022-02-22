@@ -6,7 +6,7 @@
         <div class="menubar-menu-button" :class="isOpen===index? 'open' :''"
           v-for="(item, index) in menuList" :key="index" style="visibility: visible;"
           @click="toShow(index)" @mouseover="mouseover(index)">
-          <div class="menubar-menu-title"><i class="menu-icon" v-if="item.icon"></i>{{item.title}}
+          <div class="menubar-menu-title"><i class="menu-icon" v-if="item.icon"></i>{{item.name}}
           </div>
           <div class="menu-items-content" v-if="isOpen===index && item.submenu">
             <menu-items :data="item.submenu" />
@@ -53,7 +53,7 @@ export default {
   mounted() {
     let that = this;
     document.addEventListener("click", function (e) {
-      if (!that.$refs.menu?.contains(e.target)) { 
+      if (!that.$refs.menu?.contains(e.target)) {
         that.isOpen = "";
       }
     });

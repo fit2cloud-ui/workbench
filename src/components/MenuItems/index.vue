@@ -5,12 +5,12 @@
       @mouseenter="mouseenter($event, item, index)" @mouseleave="isOpen=''">
       <div class="menu-label">
         <i class="menu-itemIcon iconfont icon-duigou"
-          :style="{visibility: item.isSet?'visible':'hidden'}"></i>{{item.title}}
+          :style="{visibility: item.isSet?'visible':'hidden'}"></i>{{item.name}}
       </div>
       <div class="menu-right">
         <i class="menu-itemSubmenuIcon iconfont icon-youjiantou" v-if="item.submenu"></i>
         <div class="menu-itemHotkey" v-else-if="item.hotkey">{{item.hotkey}}</div>
-        <menu-items v-if="item.submenu && (isOpen===(item.title+index))" :data="item.submenu"
+        <menu-items v-if="item.submenu && (isOpen===(item.name+index))" :data="item.submenu"
           class="menu-subItem" />
       </div>
     </li>
@@ -35,7 +35,7 @@ export default {
     mouseenter(e, item, index) {
       e.stopPropagation();
       if (item?.submenu) {
-        this.isOpen = item.title + index;
+        this.isOpen = item.name + index;
       }
     },
     subMclick(e, item) {
