@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <workbench ref="workbench" :title="title" :app-menu="menu"
-      @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop">
+    <workbench ref="workbench" :title="title" :app-menu="menu" @activated="onWidgetActivatedEvent"
+      @deleted="onWidgetDeletedEvent" @drop="drop" :footer-style="{
+        background: '#363636'
+      }">
       <!-- 侧边栏 -->
       <div slot="sidebar" class="sidebar">
-        <el-button icon="el-icon-search" circle size="mini" type="primary" @click="sidebarClick"></el-button>
+        <el-button icon="el-icon-search" circle size="mini" type="primary" @click="sidebarClick">
+        </el-button>
       </div>
       <div slot="sidebar-components">
         <component :is="customSidebarCon" :name="'资源管理器'" @click="treeClick"></component>
@@ -113,9 +116,7 @@ export default {
       widgets: {},
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   computed: {
     helloWorldWidgets() {
       const widgets = [];
@@ -130,7 +131,7 @@ export default {
   },
   methods: {
     sidebarClick() {
-      this.customSidebarCon = ResourceManage
+      this.customSidebarCon = ResourceManage;
     },
     drop() {
       this.onClicked(this.dragElement);

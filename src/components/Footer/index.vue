@@ -1,6 +1,5 @@
 <template>
-  <footer class="statusbar" id="workbench.statusbar" :class="footerClass"
-    :style="{...footerStyle}">
+  <footer class="statusbar" id="workbench.statusbar" :class="footerClass" :style="{...footerStyle}">
     <slot></slot>
   </footer>
 </template>
@@ -12,6 +11,7 @@ export default {
     footerClass: String,
     footerStyle: Object,
   },
+  created() {},
 };
 </script>
 
