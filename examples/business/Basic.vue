@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar"
       @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"

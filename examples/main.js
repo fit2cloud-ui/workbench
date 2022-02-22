@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import "@/styles/index.scss"
+import "./styles/index.scss"
 import App from './App.vue'
 import Workbench from "@/index"
 import ElementUI from 'element-ui';

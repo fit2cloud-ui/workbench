@@ -1,5 +1,4 @@
 <template>
-
   <div id="workbench" class="workbench">
     <div class="grid-view">
       <div class="split-view-container">
@@ -42,7 +41,6 @@
         </div>
 
       </div>
-
     </div>
 
   </div>
@@ -121,11 +119,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.workbench {
+#workbench {
   color: #cccccc;
   font-size: 13px;
   line-height: 1.4em;
-  height: 100%;
+  height: 100vh;
   .grid-view {
     overflow: hidden;
     position: relative;

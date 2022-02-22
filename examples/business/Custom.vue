@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="custom">
     <workbench ref="workbench" :title="title" :app-menu="menu" @activated="onWidgetActivatedEvent"
       @deleted="onWidgetDeletedEvent" @drop="drop" :footer-style="{
         background: '#363636'
@@ -155,7 +155,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#app {
+#custom {
   .sidebar {
     text-align: center;
     padding: 15px 0;
