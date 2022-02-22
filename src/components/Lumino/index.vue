@@ -206,7 +206,7 @@ $font-size-root: 13px;
       // border: 1px solid #C0C0C0;
       border-top: none;
       position: relative;
-      // overflow: auto;
+      overflow: auto;
       margin-top: 11px;
     }
     .p-TabBar,
@@ -251,35 +251,35 @@ $font-size-root: 13px;
         }
       }
     }
-    // .p-DockPanel-handle:before,
-    // .lm-DockPanel-handle:before {
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   content: "";
-    //   background: #444444;
-    // }
-    // .p-DockPanel-handle[data-orientation="horizontal"]:before,
-    // .lm-DockPanel-handle[data-orientation="horizontal"]:before {
-    //   left: 0;
-    //   width: 1px;
-    // }
-    // .p-DockPanel-handle[data-orientation="vertical"]:before,
-    // .lm-DockPanel-handle[data-orientation="vertical"]:before {
-    //   top: 100%;
-    //   height: 1px;
-    // }
-    // .p-DockPanel-handle,
-    // .lm-DockPanel-handle {
-    //   &:hover {
-    //     background: #1471af;
-    //     &::before {
-    //       background: none;
-    //     }
-    //   }
-    // }
+    .p-DockPanel-handle:before,
+    .lm-DockPanel-handle:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: #444444;
+    }
+    .p-DockPanel-handle[data-orientation="horizontal"]:before,
+    .lm-DockPanel-handle[data-orientation="horizontal"]:before {
+      left: 0;
+      width: 1px;
+    }
+    .p-DockPanel-handle[data-orientation="vertical"]:before,
+    .lm-DockPanel-handle[data-orientation="vertical"]:before {
+      top: 100%;
+      height: 1px;
+    }
+    .p-DockPanel-handle,
+    .lm-DockPanel-handle {
+      &:hover {
+        background: #1471af;
+        &::before {
+          background: none;
+        }
+      }
+    }
   }
 }
 </style>
