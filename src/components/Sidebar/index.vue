@@ -53,6 +53,12 @@ export default {
   height: calc(100vh - 57px);
   overflow: auto;
   box-sizing: border-box;
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
   .content {
     display: flex;
     flex-direction: column;

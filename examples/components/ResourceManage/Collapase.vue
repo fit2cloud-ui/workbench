@@ -96,7 +96,6 @@ export default {
     },
 
     handleDragStart(node) {
-      console.log(node);
       if (node?.data?.components) {
         this.$emit("dragstart", node.data);
       }

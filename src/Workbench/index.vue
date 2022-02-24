@@ -16,7 +16,7 @@
             </div>
             <div class="main">
               <split-pane :left="left" min="1" resizer-type="line"
-                :resizer-style="{background:'none'}" local-key="workbench-split">
+                :resizer-style="{background:'none'}" local-key="WB-split-left">
                 <div slot="left" class="pane left">
                   <slot name="sidebar-components">
                     <component :is="currentComponents" v-bind="currentSidebar"
@@ -24,10 +24,20 @@
                   </slot>
                 </div>
                 <div slot="right" class="pane right" @drop="drop($event)" @dragover.prevent>
-                  <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
-                    v-on:lumino:activated="onWidgetActivatedEvent" tab-title-prop="tab-title">
-                    <slot></slot>
-                  </Lumino>
+                  <split-pane :bottom="bottom" min="1" direction="vertical" resizer-type="line"
+                    local-key="WB-split-bottom"
+                    :resizer-style="{background:'rgba(128, 128, 128, 0.35)'}">
+                    <div slot="top">
+                      <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
+                        v-on:lumino:activated="onWidgetActivatedEvent" tab-title-prop="tab-title"
+                        :height="bottom">
+                        <slot></slot>
+                      </Lumino>
+                    </div>
+                    <div slot="bottom">
+                      <slot name="bottom-panel"></slot>
+                    </div>
+                  </split-pane>
                 </div>
               </split-pane>
             </div>
@@ -48,12 +58,9 @@
 </template>
 
 <script>
-import "@/styles/index.scss";
-import "@/components";
-
 /* ions */
 import "@/assets/iconfont/iconfont.css";
-
+import "@/components";
 import "@lumino/default-theme/style/index.css";
 export default {
   name: "Workbench",
@@ -70,6 +77,10 @@ export default {
     },
     footerClass: String,
     footerStyle: Object,
+    visibleBottomPanel: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -78,16 +89,32 @@ export default {
       currentSidebar: "",
       widgets: {},
       left: 1,
+      bottom: 1,
     };
   },
-  watch: {},
+  watch: {
+    visibleBottomPanel(val) {
+      if (val) {
+        const localVertical = JSON.parse(
+          localStorage.getItem("Fu-SP-WB-split-bottom")
+        );
+        this.bottom = localVertical?.bottom || 200;
+      } else {
+        this.bottom = 1;
+      }
+    },
+  },
+  computed: {},
   updated() {
     this.isShowLeft();
   },
   methods: {
     isShowLeft() {
       if (this.$slots["sidebar-components"] || this.currentComponents) {
-        this.left = localStorage.getItem("Fu-SP-workbench-split") || 200;
+        const localHorizontal = JSON.parse(
+          localStorage.getItem("Fu-SP-WB-split-left")
+        );
+        this.left = localHorizontal?.left || 200;
       } else {
         this.left = 1;
       }
@@ -96,7 +123,7 @@ export default {
       if (item.type !== "popover") {
         this.currentComponents = item?.components || "";
         this.currentSidebar = item || "";
-        this.isShowLeft()
+        this.isShowLeft();
       }
 
       this.$emit("changeSidebar", item);
@@ -110,9 +137,8 @@ export default {
     drop(event) {
       this.$emit("drop", event);
     },
-    activate(item) {
-      const { id, name } = item;
-      this.$refs.lumino.activateWidget(id, name);
+    activate(id) {
+      this.$refs.lumino.activateWidget(id);
     },
   },
 };

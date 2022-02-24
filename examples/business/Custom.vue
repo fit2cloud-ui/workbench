@@ -1,7 +1,8 @@
 <template>
   <div id="custom">
-    <workbench ref="workbench" :title="title" :app-menu="menu" @activated="onWidgetActivatedEvent"
-      @deleted="onWidgetDeletedEvent" @drop="drop" :footer-style="{
+    <workbench ref="workbench" :title="title" :app-menu="menu" :logo="myLogo"
+      @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop"
+      :footer-style="{
         background: '#363636'
       }">
       <!-- 侧边栏 -->
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import myLogo from "../assets/logo.png";
 import HelloWorld from "../components/HelloWorld";
 import ResourceManage from "../components/ResourceManage";
 import Footer from "../components/Footer";
@@ -35,6 +37,7 @@ export default {
 
   data() {
     return {
+      myLogo,
       title: "欢迎使用 JumpServer",
       menu: [
         {

@@ -48,8 +48,25 @@ export default {
     resizerStyle: Object,
   },
   watch: {
-    left() {
-      this.readValue();
+    left: {
+      immediate: true,
+      handler: function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+          this.$nextTick(() => {
+            this.valueL = this.defaultValue;
+          });
+        }
+      },
+    },
+    bottom: {
+      immediate: true,
+      handler: function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+          this.$nextTick(() => {
+            this.valueL = this.defaultValue;
+          });
+        }
+      },
     },
   },
   computed: {
@@ -74,7 +91,7 @@ export default {
     },
     defaultValue() {
       if (this.isHorizontal) {
-        return String(this.left)
+        return this.left
           ? this.getMin(this.percentToValue(this.left))
           : (this.right &&
               this.getMin(
@@ -82,7 +99,7 @@ export default {
               )) ||
               this.outerWrapperSize / 2;
       } else {
-        return String(this.top)
+        return this.top
           ? this.getMin(this.percentToValue(this.top))
           : (this.bottom &&
               this.getMin(
@@ -99,6 +116,9 @@ export default {
     },
     resizerAttr() {
       return this.isHorizontal ? "left" : "top";
+    },
+    anotherAttr() {
+      return this.isHorizontal ? "right" : "bottom";
     },
     saveKey({ localKey }) {
       return "Fu-SP-" + localKey;
@@ -172,14 +192,20 @@ export default {
     },
     // localStorage储存数值
     writeValue() {
+      const obj = {
+        [this.resizerAttr]: this.valueL,
+        [this.anotherAttr]: this.outerWrapperSize - this.valueL,
+      };
       if (this.localKey) {
-        localStorage.setItem(this.saveKey, this.valueL);
+        localStorage.setItem(this.saveKey,JSON.stringify(obj));
       }
     },
     readValue() {
       if (this.localKey) {
         const local = localStorage.getItem(this.saveKey);
-        this.valueL = parseInt(local) || this.defaultValue;
+        if (local && local[this.resizerAttr]) {
+          this.valueL = parseInt(local) || this.defaultValue;
+        }
       } else {
         this.valueL = this.defaultValue;
       }
@@ -274,6 +300,9 @@ export default {
       background: #1471af !important;
       &.is-horizontal {
         width: 4px;
+      }
+      &.is-vertical {
+        height: 4px;
       }
     }
 

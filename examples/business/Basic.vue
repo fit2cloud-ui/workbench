@@ -1,10 +1,14 @@
 <template>
   <div>
-    <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar"
-      @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop">
+    <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar" :logo="myLogo"
+      @changeSidebar="changeSidebar" @activated="onWidgetActivatedEvent"
+      @deleted="onWidgetDeletedEvent" @drop="drop" :visible-bottom-panel="visibleTerminal">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name">
       </component>
+      <div slot="bottom-panel">
+        我是终端
+      </div>
       <div slot="footer">
         <Footer />
       </div>
@@ -13,6 +17,7 @@
 </template>
 
 <script>
+import myLogo from "../assets/logo.png";
 import HelloWorld from "../components/HelloWorld";
 import ResourceManage from "../components/ResourceManage";
 import Footer from "../components/Footer";
@@ -25,6 +30,7 @@ export default {
 
   data() {
     return {
+      myLogo,
       title: "欢迎使用 JumpServer",
       menu: [
         {
@@ -97,6 +103,17 @@ export default {
         },
         {
           name: "终端",
+          submenu: [
+            {
+              name: "新建终端",
+              click: () => {
+                this.visibleTerminal = true;
+              },
+            },
+            {
+              name: "窗口",
+            },
+          ],
         },
         {
           name: "帮助",
@@ -169,6 +186,7 @@ export default {
       ],
       dragElement: "",
       widgets: {},
+      visibleTerminal: false,
     };
   },
   mounted() {
@@ -189,18 +207,22 @@ export default {
     },
   },
   methods: {
+    changeSidebar(item) {
+      console.log(item);
+    },
     drop() {
       this.onClicked(this.dragElement);
     },
     onClicked(item) {
       if (Object.keys(this.widgets).indexOf(item.id) >= 0) {
-        this.$refs.workbench.activate(item);
+        this.$refs.workbench.activate(item.id);
       } else {
         this.$set(this.widgets, item.id, item);
       }
       this.dragElement = "";
     },
     onWidgetActivatedEvent(event) {
+      console.log(event);
       console.log(`Activated widget ${event.id}`);
     },
     onWidgetDeletedEvent(event) {

@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div id="workflow-panel">
-      <div ref="main" id="main" class="pa-4 fill-height">
+  <div id="workflow-panel">
+    <div ref="main" id="main" class="pa-4 fill-height">
 
-      </div>
-      <div v-show="false">
-        <slot></slot>
-      </div>
+    </div>
+    <div v-show="false">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -145,7 +143,7 @@ export default {
      * @param name {String} - widget name
      */
     activateWidget(id) {
-      const luminoWidget = this.LW.filter((item) => item.id === id)[0]
+      const luminoWidget = this.LW.filter((item) => item.id === id)[0];
       this.dock.activateWidget(luminoWidget);
     },
 
@@ -196,10 +194,11 @@ $font-size-root: 13px;
 #workflow-panel {
   #main {
     display: flex;
-    min-height: calc(100vh - 48px);
+    min-height: 100vh;
+    // min-height: calc(100vh - 48px);
     .content {
-      min-width: 300px;
-      min-height: 300px;
+      min-width: 50px;
+      min-height: 50px;
       display: flex;
       flex-direction: column;
       padding: 0;
@@ -224,6 +223,7 @@ $font-size-root: 13px;
         .p-TabBar-tab,
         .lm-TabBar-tab {
           border: none;
+          border-right: 1px solid rgb(37, 37, 38);
           line-height: 35px;
           color: #ffffff;
           background: none;
