@@ -47,10 +47,8 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-  background-color: #333333;
   color: #999999;
-  width: 48px;
-  height: calc(100vh - 57px);
+  height: 100%;
   overflow: auto;
   box-sizing: border-box;
   ul,

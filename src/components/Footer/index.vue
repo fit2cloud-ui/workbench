@@ -20,7 +20,6 @@ export default {
   box-sizing: border-box;
   cursor: default;
   font-size: 12px;
-  height: 22px;
   line-height: 22px;
   overflow: visible;
   width: 100%;

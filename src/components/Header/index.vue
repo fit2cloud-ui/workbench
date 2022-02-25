@@ -1,6 +1,8 @@
 <template>
-  <div class="header">
-    <img :src="logo" alt="" class="logo">
+  <div class="workbench-header">
+    <div class="logo">
+      <img :src="logo" alt="">
+    </div>
     <div class="menu" ref="menu">
       <div class="menubar">
         <div class="menubar-menu-button" :class="isOpen===index? 'open' :''"
@@ -71,66 +73,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  background-color: #323233;
-  width: 100%;
-  height: 35px;
-  overflow: visible;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  ul,
-  li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .logo {
-    margin: 0 15px;
-    height: 20px;
-  }
-  .menu {
-    flex-shrink: 1;
-    flex-wrap: wrap;
-    .menubar {
-      .menubar-menu-button {
-        display: inline-block;
-        padding: 10px 8px;
-        box-sizing: border-box;
-        position: relative;
-        cursor: pointer;
-        &:hover {
-          background: #141414;
-        }
-      }
-      .open {
-        background: #141414;
-        .menu-items-content {
-          position: absolute;
-          top: 30px;
-          left: 0;
-          z-index: 99;
-          background: #141414;
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-          padding: 5px 10px;
-        }
-      }
-    }
-  }
-  .window-title {
-    flex: 0 1 auto;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-@media (min-width: 1200px) {
-  .window-title {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0px);
-  }
-}
 </style>

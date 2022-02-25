@@ -1,29 +1,26 @@
 <template>
   <div id="workbench" class="workbench">
-    <div class="grid-view">
-      <div class="split-view-container">
-        <div class="split-view-view top">
+    <div class="workbench__wrapper">
+        <div class="workbench__header">
           <Header :title="title" :menu="appMenu" :logo="logo"></Header>
         </div>
-        <div class="split-view-view" style="top: 35px">
-          <div class="split-view-container">
-            <div class="split-view-view">
+        <div class="workbench__main">
+            <div class="workbench__aside">
               <Sidebar :data="sidebar" @change="sidebarChange">
                 <slot name="sidebar">
                 </slot>
               </Sidebar>
-
             </div>
-            <div class="main">
+            <div  class="workbench__content">
               <split-pane :left="left" min="1" resizer-type="line"
                 :resizer-style="{background:'none'}" local-key="WB-split-left">
-                <div slot="left" class="pane left">
+                <div slot="left" class="workbench__split-pane left">
                   <slot name="sidebar-components">
                     <component :is="currentComponents" v-bind="currentSidebar"
                       v-on="currentSidebar"></component>
                   </slot>
                 </div>
-                <div slot="right" class="pane right" @drop="drop($event)" @dragover.prevent>
+                <div slot="right" class="workbench__split-pane right" @drop="drop($event)" @dragover.prevent>
                   <split-pane :bottom="bottom" min="1" direction="vertical" resizer-type="line"
                     local-key="WB-split-bottom"
                     :resizer-style="{background:'rgba(128, 128, 128, 0.35)'}">
@@ -42,8 +39,8 @@
               </split-pane>
             </div>
           </div>
-        </div>
-        <div class="split-view-view bottom">
+        <!-- </div> -->
+        <div class="workbench__footer">
           <Footer :footerClass="footerClass" :footerStyle="footerStyle">
             <slot name="footer">
             </slot>
@@ -51,13 +48,13 @@
         </div>
 
       </div>
-    </div>
 
   </div>
 
 </template>
 
 <script>
+import "@/styles/index.scss";
 /* ions */
 import "@/assets/iconfont/iconfont.css";
 import "@/components";
@@ -145,47 +142,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#workbench {
-  color: #cccccc;
-  font-size: 13px;
-  line-height: 1.4em;
-  height: 100vh;
-  .grid-view {
-    overflow: hidden;
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
-  .split-view-container {
-    height: 100%;
-    position: relative;
-    width: 100%;
-    .split-view-view {
-      position: absolute;
-      white-space: normal;
-      &.top {
-        top: 0;
-        width: 100%;
-      }
-      &.bottom {
-        bottom: 0;
-        width: 100%;
-      }
-    }
-  }
-  .main {
-    height: calc(100vh - 57px);
-    width: calc(100vw - 48px);
-    margin-left: 48px;
-    .pane {
-      height: 100%;
-    }
-    .left {
-      background-color: #252526;
-    }
-    .right {
-      width: 100%;
-    }
-  }
-}
 </style>

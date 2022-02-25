@@ -1,0 +1,55 @@
+#workbench {
+    background-color: $workbench-color-primary;
+    color: $workbench-color-text-primary;
+    font-size: $workbench-size-base;
+
+    .workbench__wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .workbench__header {
+        height: $workbench-header-height;
+        background-color: $workbench-color-primary-light-10;
+    }
+
+    .workbench__footer {
+        height: $workbench-footer-height;
+
+    }
+
+    .workbench__main {
+        flex: 1;
+        position: relative;
+        display: flex;
+    }
+
+
+    .workbench__aside {
+        width: $workbench-aside-width;
+        height: 100%;
+        background-color: $workbench-color-primary-light-10;
+    }
+
+    .workbench__content {
+        flex: 1;
+
+        .workbench__split-pane {
+            height: 100%;
+
+            &.left {
+                background-color: $workbench-color-primary-light-3;
+            }
+
+            &.right {
+                width: 100%;
+            }
+        }
+
+
+
+
+    }
+}
