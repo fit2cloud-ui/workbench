@@ -1,6 +1,6 @@
 <template>
   <div class="workbench-lumino" id="workflow-panel">
-    <div ref="main" id="main" class="pa-4 fill-height">
+    <div ref="main" id="main" class="pa-4 fill-height" :style="{'min-height': minHeight}">
 
     </div>
     <div v-show="false">
@@ -45,6 +45,20 @@ export default {
     tabTitleProp: {
       type: String,
       default: "name",
+    },
+    height: {
+      type: [Number, String],
+      default: 200,
+    },
+  },
+  watch: {
+    height() {
+      this.main.update();
+    },
+  },
+  computed: {
+    minHeight() {
+      return `calc(100vh - ${this.height}px - 70px)`;
     },
   },
 
@@ -189,5 +203,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

@@ -7,7 +7,7 @@
         :is="item.components" :tab-title="item.name">
       </component>
       <div slot="bottom-panel">
-        我是终端
+        <Terminal />
       </div>
       <div slot="footer">
         <Footer />
@@ -21,11 +21,13 @@ import myLogo from "../assets/logo.png";
 import HelloWorld from "../components/HelloWorld";
 import ResourceManage from "../components/ResourceManage";
 import Footer from "../components/Footer";
+import Terminal from "../components/Terminal";
 export default {
   name: "Basic",
   components: {
     HelloWorld,
     Footer,
+    Terminal,
   },
 
   data() {
