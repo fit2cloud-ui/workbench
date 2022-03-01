@@ -1,0 +1,90 @@
+@include b(lumino) {
+  #main {
+    display: flex;
+    min-height: 100vh;
+    // min-height: calc(100vh - 48px);
+    .content {
+      min-width: 50px;
+      min-height: 50px;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      // border: 1px solid #C0C0C0;
+      border-top: none;
+      position: relative;
+      overflow: auto;
+      margin-top: 11px;
+    }
+    .p-TabBar,
+    .lm-TabBar {
+      height: 35px !important;
+      max-height: 35px;
+    }
+    .p-BoxPanel {
+      flex: 1 1 auto;
+      .p-TabBar-content {
+        padding-left: 0;
+        background-color: $workbench-color-primary-light-3;
+        border: none;
+
+        .p-TabBar-tab,
+        .lm-TabBar-tab {
+          border: none;
+          border-right: 1px solid $workbench-color-primary-light-3;
+          line-height: 35px;
+          color: #ffffff;
+          background: none;
+          height: 35px;
+          max-height: 35px;
+          background-color: $workbench-color-primary-light-6;
+        }
+        .p-TabBar-tab.p-mod-current,
+        .lm-TabBar-tab.lm-mod-current {
+          background: $workbench-color-primary;
+          height: 35px;
+          max-height: 35px;
+        }
+        .p-TabBar-tabLabel {
+          font-size: $workbench-size-base;
+        }
+
+        .p-TabBar-tabCloseIcon {
+          color: inherit;
+        }
+
+        .p-TabBar-tabCloseIcon:before {
+          content: "X";
+        }
+      }
+    }
+    .p-DockPanel-handle:before,
+    .lm-DockPanel-handle:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: $workbench-color-border-base;
+    }
+    .p-DockPanel-handle[data-orientation="horizontal"]:before,
+    .lm-DockPanel-handle[data-orientation="horizontal"]:before {
+      left: 0;
+      width: 1px;
+    }
+    .p-DockPanel-handle[data-orientation="vertical"]:before,
+    .lm-DockPanel-handle[data-orientation="vertical"]:before {
+      top: 100%;
+      height: 1px;
+    }
+    .p-DockPanel-handle,
+    .lm-DockPanel-handle {
+      &:hover {
+        background: $workbench-hover-color;
+        &::before {
+          background: none;
+        }
+      }
+    }
+  }
+}

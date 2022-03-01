@@ -3,7 +3,7 @@
     <workbench ref="workbench" :title="title" :app-menu="menu" :logo="myLogo"
       @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop"
       :footer-style="{
-        background: '#363636'
+        background: '#0070c8'
       }">
       <!-- 侧边栏 -->
       <div slot="sidebar" class="sidebar">

@@ -1,5 +1,5 @@
 <template>
-  <footer class="statusbar" id="workbench.statusbar" :class="footerClass" :style="{...footerStyle}">
+  <footer class="workbench-footer" id="workbench.statusbar" :class="footerClass" :style="{...footerStyle}">
     <slot></slot>
   </footer>
 </template>
@@ -16,15 +16,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.statusbar {
-  box-sizing: border-box;
-  cursor: default;
-  font-size: 12px;
-  line-height: 22px;
-  overflow: visible;
-  width: 100%;
-  background-color: #007acc;
-  color: #ffffff;
-  font-weight: 800;
-}
+
 </style>

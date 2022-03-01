@@ -1,6 +1,6 @@
 <template>
-  <div :style="{ cursor, userSelect}" class="fu-split-pane" ref="outerWrapper">
-    <div :class="[`is-${direction}`,'fu-split-pane__left']"
+  <div :style="{ cursor, userSelect}" class="workbench-split-pane" ref="outerWrapper">
+    <div :class="[`is-${direction}`,'workbench-split-pane__left']"
       :style="{ [attr]: `${valueL}px`, 'padding-right': padding }">
       <slot :name="isHorizontal ? 'left' : 'top'"></slot>
     </div>
@@ -12,7 +12,7 @@
         </slot>
       </div>
     </div>
-    <div :class="[`is-${direction}`,'fu-split-pane__right']"
+    <div :class="[`is-${direction}`,'workbench-split-pane__right']"
       :style="{ [attr]: valueR, 'padding-left':padding}">
       <slot :name="isHorizontal ? 'right' : 'bottom'"></slot>
     </div>
@@ -121,11 +121,11 @@ export default {
       return this.isHorizontal ? "right" : "bottom";
     },
     saveKey({ localKey }) {
-      return "Fu-SP-" + localKey;
+      return "workbench-SP-" + localKey;
     },
     resizerClasses() {
       const classes = [
-        `fu-split-pane__${this.resizerType}`,
+        `workbench-split-pane__${this.resizerType}`,
         `is-${this.direction}`,
         this.resizable && "is-resizable",
         this.resizerClass,
@@ -215,116 +215,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fu-split-pane {
-  height: 100%;
-  position: relative;
 
-  .fu-split-pane__left {
-    box-sizing: border-box;
-    overflow: hidden;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-
-    &.is-horizontal {
-      left: 0;
-    }
-
-    &.is-vertical {
-      top: 0;
-    }
-  }
-
-  .fu-split-pane__right {
-    box-sizing: border-box;
-    overflow: hidden;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-
-    &.is-horizontal {
-      right: 0;
-    }
-
-    &.is-vertical {
-      bottom: 0;
-    }
-  }
-
-  .fu-split-pane__resizer {
-    box-sizing: border-box;
-    background: #f8f8f9;
-    border: 1px solid #dcdee2;
-    position: absolute;
-    z-index: 1;
-
-    &.is-horizontal {
-      width: 6px;
-      height: 100%;
-      transform: translateX(-50%);
-      border-top: none;
-      border-bottom: none;
-
-      .icon {
-        color: rgba(23, 35, 61, 0.25);
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(90deg);
-      }
-    }
-
-    &.is-vertical {
-      height: 6px;
-      width: 100%;
-      transform: translateY(-50%);
-      border-left: none;
-      border-right: none;
-
-      .icon {
-        color: rgba(23, 35, 61, 0.25);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-  }
-
-  .fu-split-pane__line {
-    position: absolute;
-    background: #dcdee2;
-    z-index: 1;
-
-    &:hover {
-      background: #1471af !important;
-      &.is-horizontal {
-        width: 4px;
-      }
-      &.is-vertical {
-        height: 4px;
-      }
-    }
-
-    &.is-horizontal {
-      width: 1px;
-      height: 100%;
-    }
-
-    &.is-vertical {
-      height: 1px;
-      width: 100%;
-    }
-  }
-
-  .is-resizable {
-    &.is-horizontal {
-      cursor: col-resize;
-    }
-
-    &.is-vertical {
-      cursor: row-resize;
-    }
-  }
-}
 </style>

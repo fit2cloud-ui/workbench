@@ -1,0 +1,10 @@
+@include b(footer) {
+    box-sizing: border-box;
+    cursor: default;
+    font-size: $workbench-size-small;
+    line-height: $workbench-footer-height;
+    overflow: visible;
+    width: 100%;
+    background-color: $workbench-color-primary-light-20;
+    color: $workbench-color-white;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div id="workflow-panel">
+  <div class="workbench-lumino" id="workflow-panel">
     <div ref="main" id="main" class="pa-4 fill-height">
 
     </div>
@@ -189,97 +189,5 @@ export default {
 </script>
 
 <style lang="scss">
-// $body-font-family: "Roboto, Ubuntu, Arial, Verdana, sans-serif";
-$font-size-root: 13px;
-#workflow-panel {
-  #main {
-    display: flex;
-    min-height: 100vh;
-    // min-height: calc(100vh - 48px);
-    .content {
-      min-width: 50px;
-      min-height: 50px;
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      // border: 1px solid #C0C0C0;
-      border-top: none;
-      position: relative;
-      overflow: auto;
-      margin-top: 11px;
-    }
-    .p-TabBar,
-    .lm-TabBar {
-      height: 35px !important;
-      max-height: 35px;
-    }
-    .p-BoxPanel {
-      flex: 1 1 auto;
-      .p-TabBar-content {
-        padding-left: 0;
-        background-color: #252526;
-        border: none;
 
-        .p-TabBar-tab,
-        .lm-TabBar-tab {
-          border: none;
-          border-right: 1px solid rgb(37, 37, 38);
-          line-height: 35px;
-          color: #ffffff;
-          background: none;
-          height: 35px;
-          max-height: 35px;
-          background-color: #2d2d2d;
-        }
-        .p-TabBar-tab.p-mod-current,
-        .lm-TabBar-tab.lm-mod-current {
-          background: #1e1e1e;
-          height: 35px;
-          max-height: 35px;
-        }
-        .p-TabBar-tabLabel {
-          // font-family: $body-font-family;
-          font-size: $font-size-root;
-        }
-
-        .p-TabBar-tabCloseIcon {
-          color: inherit;
-        }
-
-        .p-TabBar-tabCloseIcon:before {
-          content: "X";
-        }
-      }
-    }
-    .p-DockPanel-handle:before,
-    .lm-DockPanel-handle:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      content: "";
-      background: #444444;
-    }
-    .p-DockPanel-handle[data-orientation="horizontal"]:before,
-    .lm-DockPanel-handle[data-orientation="horizontal"]:before {
-      left: 0;
-      width: 1px;
-    }
-    .p-DockPanel-handle[data-orientation="vertical"]:before,
-    .lm-DockPanel-handle[data-orientation="vertical"]:before {
-      top: 100%;
-      height: 1px;
-    }
-    .p-DockPanel-handle,
-    .lm-DockPanel-handle {
-      &:hover {
-        background: #1471af;
-        &::before {
-          background: none;
-        }
-      }
-    }
-  }
-}
 </style>
