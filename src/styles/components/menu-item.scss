@@ -1,0 +1,52 @@
+@include b(menu-items) {
+    @include b(menu-item) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        white-space: nowrap;
+        line-height: 25px;
+        padding-right: 5px;
+
+        &:hover {
+            background: $workbench-color-primary-light-20;
+            color: $workbench-color-white;
+        }
+
+        &.border-bottom {
+            border-bottom: 1px solid $workbench-color-primary-light-30;
+            padding-bottom: 3px;
+            margin-bottom: 3px;
+        }
+
+        @include e(label) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 60px;
+        }
+
+        @include e(right) {
+            position: relative;
+        }
+
+        @include e(icon) {
+            margin-right: 2px;
+            margin-left: -2px;
+            font-size: $workbench-size-base!important;
+        }
+
+        @include e(submenuIcon) {
+            font-size: $workbench-size-base;
+        }
+
+        @include b(menu-subItem) {
+            background: $workbench-color-primary-light-3;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            padding: 5px 10px;
+        }
+
+    }
+}

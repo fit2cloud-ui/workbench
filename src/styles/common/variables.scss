@@ -4,31 +4,23 @@ $workbench-color-primary: #1e1e1e !default;
 
 $workbench-color-white: #FFFFFF !default;
 
+$workbench-color-black: #000000 !default;
+
 $workbench-color-primary-light-1: mix($workbench-color-white, $workbench-color-primary, 2%) !default;
 // #292929
 $workbench-color-primary-light-3: mix($workbench-color-white, $workbench-color-primary, 3%) !default;
 // #252525
 $workbench-color-primary-light-10: mix($workbench-color-white, $workbench-color-primary, 10%) !default;
 // #353535
-// $workbench-color-primary-light-2: mix($workbench-color-white, $workbench-color-primary, 20%) !default;
-// // #4b4b4b
-// $workbench-color-primary-light-3: mix($workbench-color-white, $workbench-color-primary, 30%) !default;
-// // #626262
-// $workbench-color-primary-light-4: mix($workbench-color-white, $workbench-color-primary, 40%) !default;
-// // #787878
-// $workbench-color-primary-light-5: mix($workbench-color-white, $workbench-color-primary, 50%) !default;
-// // #8f8f8f
-// $workbench-color-primary-light-6: mix($workbench-color-white, $workbench-color-primary, 60%) !default;
-// // #a5a5a5
-// $workbench-color-primary-light-7: mix($workbench-color-white, $workbench-color-primary, 70%) !default;
-// // #bcbcbc 
-// $workbench-color-primary-light-8: mix($workbench-color-white, $workbench-color-primary, 80%) !default;
-// // #bcbcbc  
-// $workbench-color-primary-light-9: mix($workbench-color-white, $workbench-color-primary, 90%) !default; 
-// // #e9e9e9 
+$workbench-color-primary-light-20: mix($workbench-color-white, $workbench-color-primary, 20%) !default;
+// #4b4b4b
+$workbench-color-primary-light-30: mix($workbench-color-white, $workbench-color-primary, 30%) !default;
+// #4b4b4b
 
 /// color|Font Color
 $workbench-color-text-primary: #cccccc !default;
+$workbench-color-text-secondary: #909399 !default;
+
 
 /* Size
 -------------------------- */

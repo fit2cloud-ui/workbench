@@ -1,0 +1,56 @@
+@include b(sidebar) {
+    color: $workbench-color-text-secondary;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    @include b(siderbar-item) {
+        @include e(icon) {
+            font-size: 24px !important;
+        }
+
+        .action-item {
+            text-align: center;
+            line-height: 48px;
+            box-sizing: border-box;
+            cursor: pointer;
+
+            &:hover {
+                color: $workbench-color-white;
+            }
+
+            &.checked {
+                color: $workbench-color-white;
+                border-left: 2px solid $workbench-color-white;
+            }
+
+            &.popover {
+                color: $workbench-color-white;
+            }
+        }
+
+        @include e(popover) {
+            background: $workbench-color-primary-light-3;
+            box-shadow: 0 0 2px rgb(0, 0, 0, .8);
+            padding: 5px 10px;
+            color: $workbench-color-text-primary;
+            margin-left: 40px;
+            z-index: 999;
+        }
+    }
+}

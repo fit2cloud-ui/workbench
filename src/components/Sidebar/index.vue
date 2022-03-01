@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="workbench-sidebar">
     <slot>
       <div class="content">
         <div class="top-bar">
@@ -46,23 +46,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  color: #999999;
-  height: 100%;
-  overflow: auto;
-  box-sizing: border-box;
-  ul,
-  li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    box-sizing: border-box;
-  }
-}
+
 </style>

@@ -3,7 +3,7 @@
     <div class="logo">
       <img :src="logo" alt="">
     </div>
-    <div class="menu" ref="menu">
+    <div class="workbench-menu" ref="menu">
       <div class="menubar">
         <div class="menubar-menu-button" :class="isOpen===index? 'open' :''"
           v-for="(item, index) in menuList" :key="index" style="visibility: visible;"

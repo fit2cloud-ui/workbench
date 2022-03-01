@@ -1,15 +1,15 @@
 <template>
-  <ul class="siderbar-item-container">
+  <ul class="workbench-siderbar-item">
     <template v-for="(item, index) in data">
       <popper v-if="item.type==='popover'" trigger="clickToOpen" :options="{ placement: 'right' }"
         :key="index">
-        <div class="sidebar-popover">
+        <div class="workbench-siderbar-item__popover">
           <menu-items :data="item.submenu" />
         </div>
         <li class="action-item" slot="reference" :class="getClassName(item, index)" draggable="true"
           @click="handleClick(item, index)">
           <a :title="getName(item)">
-            <i :class="item.icon"></i></a>
+            <i :class="item.icon" class="workbench-siderbar-item__icon"></i></a>
 
         </li>
       </popper>
@@ -17,7 +17,7 @@
         :class="getClassName(item, index)" draggable="true" @click="handleClick(item, index)">
 
         <a :title="getName(item)">
-          <i :class="item.icon"></i></a>
+          <i :class="item.icon" class="workbench-siderbar-item__icon"></i></a>
 
       </li>
     </template>
@@ -50,8 +50,12 @@ export default {
   },
   methods: {
     handleClick(item, index) {
-      this.isCheck = this.isCheck === index ? "" : index;
-      this.$emit("change", String(this.isCheck) ? item : "");
+      if (item.type !== "popover") {
+        this.isCheck = this.isCheck === index ? "" : index;
+        this.$emit("change", String(this.isCheck) ? item : "");
+      } else {
+        this.$emit("change", item);
+      }
     },
     getClassName(item, index) {
       if (this.isCheck === index) {
@@ -68,35 +72,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.siderbar-item-container {
-  .action-item {
-    text-align: center;
-    // height: 48px;
-    // width: 48px;
-    line-height: 48px;
-    box-sizing: border-box;
-    cursor: pointer;
-    &:hover {
-      color: #ffffff;
-    }
-    &.checked {
-      color: #ffffff;
-      border-left: 2px solid #ffffff;
-    }
-    &.popover {
-      color: #ffffff;
-    }
-  }
-  .iconfont {
-    font-size: 24px !important;
-  }
-  .sidebar-popover {
-    background: #141414;
-    box-shadow: 0 0 2px rgb(0 0 0 / 80%);
-    padding: 5px 10px;
-    color: #ffffff;
-    margin-left: 40px;
-    z-index: 999;
-  }
-}
 </style>
