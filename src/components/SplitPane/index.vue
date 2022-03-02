@@ -146,11 +146,6 @@ export default {
   },
   mounted() {
     this.readValue();
-    window.onresize = () => {
-      this.$nextTick(() => {
-        console.log(this.outerWrapperSize);
-      });
-    };
   },
   methods: {
     onMouseDown(e) {

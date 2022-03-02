@@ -7,7 +7,7 @@
         :is="item.components" :tab-title="item.name">
       </component>
       <div slot="bottom-panel">
-        <Terminal />
+        <Terminal @close="closeTerminal"/>
       </div>
       <div slot="footer">
         <Footer />
@@ -209,6 +209,12 @@ export default {
     },
   },
   methods: {
+    closeTerminal(bool) {
+      if(bool) {
+        this.visibleTerminal = false
+      }
+
+    },
     changeSidebar(item) {
       console.log(item);
     },
