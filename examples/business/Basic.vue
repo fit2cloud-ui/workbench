@@ -2,12 +2,13 @@
   <div>
     <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar" :logo="myLogo"
       @changeSidebar="changeSidebar" @activated="onWidgetActivatedEvent"
-      @deleted="onWidgetDeletedEvent" @drop="drop" :visible-bottom-panel="visibleTerminal">
+      @deleted="onWidgetDeletedEvent" @drop="drop" :visible-bottom-panel="visibleTerminal"
+      @contextmenu-id="onWidgetContextmenuId" :contextmenu="contextmenu">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name" :iconClass="item.iconClass">
       </component>
       <div slot="bottom-panel">
-        <Terminal @close="closeTerminal"/>
+        <Terminal @close="closeTerminal" />
       </div>
       <div slot="footer">
         <Footer />
@@ -189,6 +190,25 @@ export default {
       dragElement: "",
       widgets: {},
       visibleTerminal: false,
+
+      // 右键菜单
+      contextmenu: [
+        {
+          id: "Cut",
+          label: "剪切",
+          execute: function (e) {
+            console.log(e);
+          },
+          key: "Accel X",
+        },
+        {
+          id: "Copy File",
+          label: "复制",
+          execute: function () {
+            console.log("Copy");
+          },
+        },
+      ],
     };
   },
   mounted() {
@@ -210,10 +230,9 @@ export default {
   },
   methods: {
     closeTerminal(bool) {
-      if(bool) {
-        this.visibleTerminal = false
+      if (bool) {
+        this.visibleTerminal = false;
       }
-
     },
     changeSidebar(item) {
       console.log(item);
@@ -236,6 +255,9 @@ export default {
     onWidgetDeletedEvent(event) {
       this.$delete(this.widgets, event.id);
       console.log(`Deleted widget ${event.id}`);
+    },
+    onWidgetContextmenuId(id) {
+      console.log(`Contextmenu widget ${id}`);
     },
   },
 };

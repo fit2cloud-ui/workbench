@@ -28,7 +28,9 @@
                 @changeSplit="changeSplit">
                 <div slot="top">
                   <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
-                    v-on:lumino:activated="onWidgetActivatedEvent" tab-title-prop="tab-title" :height="bottom">
+                    v-on:lumino:activated="onWidgetActivatedEvent"
+                    v-on:lumino:contextmenu="onWidgetContextmenuEvent" tab-title-prop="tab-title"
+                    :height="bottom" :contextmenu="contextmenu">
                     <slot></slot>
                   </Lumino>
                 </div>
@@ -78,6 +80,10 @@ export default {
     visibleBottomPanel: {
       type: Boolean,
       default: false,
+    },
+    contextmenu: {
+      type: Array,
+      default: () => [],
     },
   },
 
@@ -134,6 +140,9 @@ export default {
     },
     onWidgetDeletedEvent(event) {
       this.$emit("deleted", event);
+    },
+    onWidgetContextmenuEvent(event) {
+      this.$emit("contextmenu-id", event);
     },
     drop(event) {
       this.$emit("drop", event);

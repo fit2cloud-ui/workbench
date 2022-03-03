@@ -43,6 +43,10 @@ export default {
       type: [Number, String],
       default: 200,
     },
+    contextmenu: {
+      type: Array,
+      default: () => [],
+    },
   },
   watch: {
     height() {
@@ -66,27 +70,7 @@ export default {
       dock: new DockPanel(),
       widgets: [],
       myLuminoWidget: [],
-      commandsList: [
-        {
-          id: "Cut",
-          label: "Cut",
-          mnemonic: 1,
-          iconClass: "fa fa-cut",
-          execute: function (e) {
-            console.log(e);
-          },
-          key: "Accel X",
-        },
-        {
-          id: "Copy File",
-          label: "Copy File",
-          mnemonic: 0,
-          iconClass: "fa fa-copy",
-          execute: function () {
-            console.log("Copy");
-          },
-        },
-      ],
+      commandsList: [],
     };
   },
 
@@ -95,31 +79,6 @@ export default {
    * Box panel. In the next tick of Vue, the DOM element and the Vue element/ref are attached.
    */
   created() {
-    let commands = new CommandRegistry();
-    this.commandsList.map((item) => {
-      commands.addCommand(item.id, item);
-      item.key &&
-        commands.addKeyBinding({
-          keys: [item.key],
-          selector: "body",
-          command: item.id,
-        });
-    });
-    let contextMenu = new ContextMenu({ commands: commands });
-
-    document.addEventListener("contextmenu", function (event) {
-      if (contextMenu.open(event)) {
-        console.log(event);
-        event.preventDefault();
-      }
-    });
-    this.commandsList.forEach((item) => {
-      contextMenu.addItem({
-        command: item.id,
-        selector: ".lm-TabBar-tab",
-      });
-    });
-
     this.dock.id = "dock";
     this.main.id = "main";
     this.main.addWidget(this.dock);
@@ -132,6 +91,7 @@ export default {
       Widget.attach(vm.main, vm.$refs.main);
       this.syncWidgets();
     });
+    this.createContextmenu();
   },
 
   /**
@@ -168,6 +128,35 @@ export default {
         });
     },
 
+    createContextmenu() {
+      if (this.contextmenu.length > 0) {
+        let commands = new CommandRegistry();
+        this.contextmenu.map((item) => {
+          commands.addCommand(item.id, item);
+          item.key &&
+            commands.addKeyBinding({
+              keys: [item.key],
+              selector: "body",
+              command: item.id,
+            });
+        });
+        let contextMenu = new ContextMenu({ commands: commands });
+
+        document.addEventListener("contextmenu", (event) => {
+          if (contextMenu.open(event)) {
+            event.preventDefault();
+            this.onWidgetContextmenu(event);
+          }
+        });
+        this.contextmenu.forEach((item) => {
+          contextMenu.addItem({
+            command: item.id,
+            selector: ".lm-TabBar-tab",
+          });
+        });
+      }
+    },
+
     /**
      * Create a widget.
      *
@@ -176,7 +165,13 @@ export default {
      */
     addWidget(id, name, icon, iconClass) {
       this.widgets.push(id);
-      const luminoWidget = new LuminoWidget(id, name, icon, iconClass,/* closable */ true);
+      const luminoWidget = new LuminoWidget(
+        id,
+        name,
+        icon,
+        iconClass,
+        /* closable */ true
+      );
       this.dock.addWidget(luminoWidget);
       this.dock.activateWidget(luminoWidget);
       this.myLuminoWidget.push(luminoWidget);
@@ -240,6 +235,17 @@ export default {
         .getElementById(id)
         .removeEventListener("lumino:activated", this.onWidgetActivated);
       this.$emit("lumino:deleted", customEvent.detail);
+    },
+
+    onWidgetContextmenu(event) {
+      let id = "";
+      const node = event.target;
+      if (node?.dataset?.id) {
+        id = event.target?.dataset?.id;
+      } else {
+        id = node.parentNode?.dataset?.id;
+      }
+      this.$emit("lumino:contextmenu", id);
     },
   },
 };
