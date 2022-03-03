@@ -45,6 +45,7 @@ export default {
                 {
                   id: "1-1-1",
                   name: "三级 1-1-1",
+                  iconClass: "iconfont icon-jinggao",
                   components: "HelloWorld",
                 },
               ],

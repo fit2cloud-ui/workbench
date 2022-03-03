@@ -118,7 +118,6 @@ export default {
       }
     },
     changeSplit(val) {
-      console.log(val)
       this.bottom = val || 200;
     },
     sidebarChange(item) {

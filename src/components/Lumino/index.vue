@@ -11,8 +11,8 @@
 
 <script>
 import LuminoWidget from "./lumino-widget";
-import { BoxPanel, DockPanel, Widget } from "@lumino/widgets";
-
+import { CommandRegistry } from "@lumino/commands";
+import { BoxPanel, DockPanel, Widget, ContextMenu } from "@lumino/widgets";
 /**
  * A component to wrap the Lumino application.
  *
@@ -30,18 +30,11 @@ import { BoxPanel, DockPanel, Widget } from "@lumino/widgets";
  *
  * @since 0.2
  */
+
 export default {
-  /**
-   * Show a useful name in logs/debug/vue-extension
-   */
   name: "Lumino",
 
   props: {
-    /**
-     * Prop to customize the tab title. Defaults to name.
-     * If a component does not have the $component.$tabTitleProp
-     * set, then we still revert to the old default $component.name.
-     */
     tabTitleProp: {
       type: String,
       default: "name",
@@ -72,7 +65,28 @@ export default {
       // create dock panel, which holds the widgets
       dock: new DockPanel(),
       widgets: [],
-      LW: [],
+      myLuminoWidget: [],
+      commandsList: [
+        {
+          id: "Cut",
+          label: "Cut",
+          mnemonic: 1,
+          iconClass: "fa fa-cut",
+          execute: function (e) {
+            console.log(e);
+          },
+          key: "Accel X",
+        },
+        {
+          id: "Copy File",
+          label: "Copy File",
+          mnemonic: 0,
+          iconClass: "fa fa-copy",
+          execute: function () {
+            console.log("Copy");
+          },
+        },
+      ],
     };
   },
 
@@ -81,6 +95,31 @@ export default {
    * Box panel. In the next tick of Vue, the DOM element and the Vue element/ref are attached.
    */
   created() {
+    let commands = new CommandRegistry();
+    this.commandsList.map((item) => {
+      commands.addCommand(item.id, item);
+      item.key &&
+        commands.addKeyBinding({
+          keys: [item.key],
+          selector: "body",
+          command: item.id,
+        });
+    });
+    let contextMenu = new ContextMenu({ commands: commands });
+
+    document.addEventListener("contextmenu", function (event) {
+      if (contextMenu.open(event)) {
+        console.log(event);
+        event.preventDefault();
+      }
+    });
+    this.commandsList.forEach((item) => {
+      contextMenu.addItem({
+        command: item.id,
+        selector: ".lm-TabBar-tab",
+      });
+    });
+
     this.dock.id = "dock";
     this.main.id = "main";
     this.main.addWidget(this.dock);
@@ -120,7 +159,9 @@ export default {
           const name = newChild.$attrs[tabTitleProp]
             ? newChild.$attrs[tabTitleProp]
             : newChild.$options.name;
-          this.addWidget(id, name);
+          const icon = newChild.$attrs?.icon;
+          const iconClass = newChild.$attrs?.iconClass;
+          this.addWidget(id, name, icon, iconClass);
           this.$nextTick(() => {
             document.getElementById(id).appendChild(newChild.$el);
           });
@@ -133,12 +174,12 @@ export default {
      * @param id {String} - widget ID
      * @param name {String} - widget name
      */
-    addWidget(id, name) {
+    addWidget(id, name, icon, iconClass) {
       this.widgets.push(id);
-      const luminoWidget = new LuminoWidget(id, name, /* closable */ true);
+      const luminoWidget = new LuminoWidget(id, name, icon, iconClass,/* closable */ true);
       this.dock.addWidget(luminoWidget);
       this.dock.activateWidget(luminoWidget);
-      this.LW.push(luminoWidget);
+      this.myLuminoWidget.push(luminoWidget);
       // give time for Lumino's widget DOM element to be created
       this.$nextTick(() => {
         document
@@ -157,7 +198,9 @@ export default {
      * @param name {String} - widget name
      */
     activateWidget(id) {
-      const luminoWidget = this.LW.filter((item) => item.id === id)[0];
+      const luminoWidget = this.myLuminoWidget.filter(
+        (item) => item.id === id
+      )[0];
       this.dock.activateWidget(luminoWidget);
     },
 

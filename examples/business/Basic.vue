@@ -4,7 +4,7 @@
       @changeSidebar="changeSidebar" @activated="onWidgetActivatedEvent"
       @deleted="onWidgetDeletedEvent" @drop="drop" :visible-bottom-panel="visibleTerminal">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
-        :is="item.components" :tab-title="item.name">
+        :is="item.components" :tab-title="item.name" :iconClass="item.iconClass">
       </component>
       <div slot="bottom-panel">
         <Terminal @close="closeTerminal"/>

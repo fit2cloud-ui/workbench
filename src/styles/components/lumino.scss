@@ -30,17 +30,17 @@
         .lm-TabBar-tab {
           border: none;
           border-right: 1px solid $workbench-color-primary-light-3;
-          line-height: 35px;
-          color: #ffffff;
           background: none;
-          height: 35px;
+          color: $workbench-color-text-secondary;
+          padding: 8px 5px 8px 10px;
           max-height: 35px;
           background-color: $workbench-color-primary-light-6;
         }
         .p-TabBar-tab.p-mod-current,
         .lm-TabBar-tab.lm-mod-current {
           background: $workbench-color-primary;
-          height: 35px;
+          color: $workbench-color-white;
+          padding: 8px 5px 8px 10px;
           max-height: 35px;
         }
         .p-TabBar-tabLabel {
@@ -49,12 +49,24 @@
 
         .p-TabBar-tabCloseIcon {
           color: inherit;
-        }
+          cursor: pointer;
+          padding: 0 4px;
+          border-radius: 5px;
+    
+          &:hover {
+            background: $workbench-color-primary-light-15;
+          }
 
-        .p-TabBar-tabCloseIcon:before {
-          content: "X";
+          &:before {
+            content: "\e60e";
+            font-family: "iconfont"
+          }
         }
       }
+    }
+    .lm-TabBar-tabIcon {
+      margin-right: 5px;
+      font-size: $workbench-size-base;
     }
     .p-DockPanel-handle:before,
     .lm-DockPanel-handle:before {
