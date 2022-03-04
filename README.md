@@ -92,6 +92,8 @@ Vue.use(Workbench);
  type   | 触发后的方式 | String | popover / - | - 
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
 
+
+**激活文件时，交互的属性
  ### 文件 Widgets Attributes
   参数  |   说明   |   类型   | 可选值 |  默认值  
  ----- | -------- | :------: | :-------: | :------: 
