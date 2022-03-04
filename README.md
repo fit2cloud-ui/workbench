@@ -23,16 +23,16 @@ Vue.use(Workbench);
 ## API 文档
 
 ### Attributes
-|    参数    |    说明   |   类型   |	可选值	| 	默认值	|
-| --------- | ---------- | :--------: | :---------: | ----------  
-| title       | 头部标题 | String | - | - 
-| app-menu    | 头部导航 | Array | - | - |
-| logo  | 头部Logo | String | - | - |
-| sidebar | 左侧侧边栏导航 | Array | - | - |
-| footerClass | 定义footer ClassName | String | - | - |
-| footerStyle | 定义footer Style | Object | - | - |
-| :visible-bottom-panel | 内容面板是否显示bottom面板（终端面板） | Boolean | - | - |
-| contextmenu | 内容面板右键tab时菜单 | Array | - | - |
+ 参数 |  说明  |  类型  |  可选值  |  默认值  |
+ --- | ------| :-----: | :----: | :------: 
+ title       | 头部标题 | String | - | - 
+ app-menu    | 头部导航 | Array | - | -
+ logo  | 头部Logo | String | - | -
+ sidebar | 左侧侧边栏导航 | Array | - | - 
+ footerClass | 定义footer ClassName | String | - | -
+ footerStyle | 定义footer Style | Object | - | -
+ :visible-bottom-panel | 内容面板是否显示bottom面板（终端面板） | Boolean | - | -
+ contextmenu | 内容面板右键tab时菜单 | Array | - | -
 
 ### Events
 |    事件名    |    说明   |  参数	|
@@ -88,5 +88,4 @@ Vue.use(Workbench);
 | component    | 要展开的组件 | String | - | - 
 | ...component | component组件里的所有属性和事件 | - | - | - 
 | type   | 触发后的方式 | String | popover / - | - 
-
 | submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
