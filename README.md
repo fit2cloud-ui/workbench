@@ -1,6 +1,8 @@
 # Workbench
 
-Wsorkbench 是基于浏览器的工作台前端框架组件，提供可拖拽的分割面板、以及工作台的基本结构和样式
+Workbench 是基于浏览器的工作台前端框架组件，提供可拖拽的分割面板、以及工作台的基本结构和样式
+
+在线预览网址：https://fit2cloud-ui.github.io/workbench/docs/(https://fit2cloud-ui.github.io/workbench/docs/)
 
 ## 安装
 ```
