@@ -55,7 +55,7 @@
                     left: 0;
                     z-index: 99;
                     background: $workbench-color-primary-light-3;
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+                    box-shadow: $workbench-box-shadow-base;
                     padding: 5px 10px;
                     color: $workbench-color-text-primary;
                 }

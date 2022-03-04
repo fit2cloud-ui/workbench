@@ -70,7 +70,6 @@ export default {
       dock: new DockPanel(),
       widgets: [],
       myLuminoWidget: [],
-      commandsList: [],
     };
   },
 

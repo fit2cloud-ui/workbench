@@ -3,7 +3,7 @@
     <workbench ref="workbench" :title="title" :app-menu="menu" :sidebar="sidebar" :logo="myLogo"
       @changeSidebar="changeSidebar" @activated="onWidgetActivatedEvent"
       @deleted="onWidgetDeletedEvent" @drop="drop" :visible-bottom-panel="visibleTerminal"
-      @contextmenu-id="onWidgetContextmenuId" :contextmenu="contextmenu">
+      @onContextmenu="onWidgetContextmenu" :contextmenu="contextmenu">
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name" :iconClass="item.iconClass">
       </component>
@@ -256,7 +256,7 @@ export default {
       this.$delete(this.widgets, event.id);
       console.log(`Deleted widget ${event.id}`);
     },
-    onWidgetContextmenuId(id) {
+    onWidgetContextmenu(id) {
       console.log(`Contextmenu widget ${id}`);
     },
   },

@@ -46,7 +46,7 @@
 
         @include e(popover) {
             background: $workbench-color-primary-light-3;
-            box-shadow: 0 0 2px rgb(0, 0, 0, .8);
+            box-shadow: $workbench-box-shadow-base;
             padding: 5px 10px;
             color: $workbench-color-text-primary;
             margin-left: 40px;

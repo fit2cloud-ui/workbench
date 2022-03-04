@@ -142,7 +142,7 @@ export default {
       this.$emit("deleted", event);
     },
     onWidgetContextmenuEvent(event) {
-      this.$emit("contextmenu-id", event);
+      this.$emit("onContextmenu", event);
     },
     drop(event) {
       this.$emit("drop", event);

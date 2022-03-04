@@ -99,3 +99,15 @@
     }
   }
 }
+.p-Menu, .lm-Menu {
+  background: $workbench-color-primary-light-3;
+  color: $workbench-color-text-primary;
+  border: none;
+  box-shadow: $workbench-box-shadow-base;
+}
+
+.p-Menu-item.p-mod-active,
+.lm-Menu-item.lm-mod-active {
+  background: $workbench-hover-color;
+  color: $workbench-color-white;
+}
