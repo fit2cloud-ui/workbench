@@ -93,12 +93,13 @@ Vue.use(Workbench);
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
 
 
-**激活文件时，交互的属性
- ### 文件 Widgets Attributes
+
+ ### 文件 Widgets Attributes （*激活文件时，交互的属性）
   参数  |   说明   |   类型   | 可选值 |  默认值  
  ----- | -------- | :------: | :-------: | :------: 
  id     | 文件唯一id | String | - | - 
- name   | 文件名称 | String | - | - 
+ name   | 文件显示名称 | String | - | - 
  iconClass    | 图标（class） | String | - | - 
  icon    | 图标（url） | String | - | - 
- components ｜ 文件名 ｜ String | - | - 
+ components   | 文件（文件名） | String | - | - 
+
