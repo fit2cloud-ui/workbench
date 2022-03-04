@@ -2,7 +2,7 @@
 
 Workbench 是基于浏览器的工作台前端框架组件，提供可拖拽的分割面板、以及工作台的基本结构和样式
 
-在线预览网址：https://fit2cloud-ui.github.io/workbench/docs/
+在线预览网址：https://fit2cloud-ui.github.io/workbench
 
 ## 安装
 ```
@@ -91,3 +91,12 @@ Vue.use(Workbench);
  ...(component) | component组件里的所有属性和事件 | - | - | - 
  type   | 触发后的方式 | String | popover / - | - 
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
+
+ ### 文件 Widgets Attributes
+  参数  |   说明   |   类型   | 可选值 |  默认值  
+ ----- | -------- | :------: | :-------: | :------: 
+ id     | 文件唯一id | String | - | - 
+ name   | 文件名称 | String | - | - 
+ iconClass    | 图标（class） | String | - | - 
+ icon    | 图标（url） | String | - | - 
+ components ｜ 文件名 ｜ String | - | - 
