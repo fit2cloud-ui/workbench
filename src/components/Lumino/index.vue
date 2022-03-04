@@ -139,16 +139,16 @@ export default {
               command: item.id,
             });
         });
-        let contextMenu = new ContextMenu({ commands: commands });
+        let menu = new ContextMenu({ commands: commands });
 
         document.addEventListener("contextmenu", (event) => {
-          if (contextMenu.open(event)) {
+          if (menu.open(event)) {
             event.preventDefault();
             this.onWidgetContextmenu(event);
           }
         });
         this.contextmenu.forEach((item) => {
-          contextMenu.addItem({
+          menu.addItem({
             command: item.id,
             selector: ".lm-TabBar-tab",
           });
@@ -236,6 +236,10 @@ export default {
       this.$emit("lumino:deleted", customEvent.detail);
     },
 
+    /**
+     * React to a contextmenu event.
+     *
+     */
     onWidgetContextmenu(event) {
       let id = "";
       const node = event.target;

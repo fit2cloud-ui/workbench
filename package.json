@@ -5,11 +5,13 @@
   "main": "lib/workbench.common.js",
   "style": "lib/workbench.css",
   "files": [
-    "/dist"
+    "lib",
+    "src"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve-examples": "vue-cli-service serve --mode examples",
+    "build-examples": "vue-cli-service build --mode examples --dest docs",
+    "build": "npm run build-lib",
     "build-lib": "vue-cli-service build --target lib --name workbench ./src/index.js --formats commonjs",
     "lint": "vue-cli-service lint"
   },
