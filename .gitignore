@@ -4,7 +4,6 @@ node_modules
 lib
 yarn.lock
 package-lock.json
-docs
 
 # local env files
 .env.demo
