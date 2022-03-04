@@ -94,7 +94,10 @@ Vue.use(Workbench);
 
 
 
- ### 文件 Widgets Attributes （*激活文件时，交互的属性）
+ ### 文件 Widgets Attributes 
+
+ ##### （*激活文件时，交互的属性）
+
   参数  |   说明   |   类型   | 可选值 |  默认值  
  ----- | -------- | :------: | :-------: | :------: 
  id     | 文件唯一id | String | - | - 
