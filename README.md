@@ -86,6 +86,6 @@ Vue.use(Workbench);
  hotkey    | 关键字 | String | - | - 
  location    | 位置 | String | top / bottom | top  
  component    | 要展开的组件 | String | - | - 
- ...component | component组件里的所有属性和事件 | - | - | - 
+ ...(component) | component组件里的所有属性和事件 | - | - | - 
  type   | 触发后的方式 | String | popover / - | - 
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
