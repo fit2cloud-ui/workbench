@@ -196,8 +196,8 @@ export default {
         {
           id: "Cut",
           label: "剪切",
-          execute: function (e) {
-            console.log(e);
+          execute: function () {
+            console.log("cut");
           },
           key: "Accel X",
         },

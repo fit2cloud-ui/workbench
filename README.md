@@ -72,7 +72,7 @@ Vue.use(Workbench);
   -----  | ------ | :------: | :------: | :-------:
  name    | 菜单名称 | String | - | - 
  submenu   | 子菜单 | Array | - | - 
- hotkey    | 关键字 | String | - | - 
+ hotkey    | 快捷键 | String | - | - 
  divided   | 分割线 | Boolean | - | false 
  isSet   | 是否已选择 | Boolean | - | false 
 
@@ -86,13 +86,24 @@ Vue.use(Workbench);
  ----- | -------- | :------: | :-------: | :------: 
  name     | 名称 | String | - | - 
  icon      | 图标（class） | String | - | - 
- hotkey    | 关键字 | String | - | - 
+ hotkey    | 快捷键 | String | - | - 
  location    | 位置 | String | top / bottom | top  
  component    | 要展开的组件 | String | - | - 
  ...(component) | component组件里的所有属性和事件 | - | - | - 
  type   | 触发后的方式 | String | popover / - | - 
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
 
+### contextmenu Attributes
+  参数  |   说明   |   类型   | 可选值 |  默认值  
+ ----- | -------- | :------: | :-------: | :------: 
+ id     | 唯一id | String ｜ - | - 
+ label  | 名称 | String | - | - 
+ key    | 快捷键 | String | - | - 
+
+### contextmenu Events
+  事件名 |   说明   |  参数  
+  --------- | ---------- | -------- 
+ execute  | 回调 | - 
 
 
  ### 文件 Widgets Attributes 
