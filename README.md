@@ -1,6 +1,6 @@
-# Workbench
+# f2c-workbench
 
-Workbench 是基于浏览器的工作台前端框架组件，提供可拖拽的分割面板、以及工作台的基本结构和样式
+f2c-workbench 是基于浏览器的工作台前端框架组件，提供可拖拽的分割面板、以及工作台的基本结构和样式
 
 在线预览网址：https://fit2cloud-ui.github.io/workbench
 
@@ -11,7 +11,8 @@ npm install Workbench --save
 
 ## 引入
 ```
-import Workbench from "Workbench"
+import Workbench from "f2c-workbench"
+import "f2c-workbench/lib/workbench.css";
 
 Vue.use(Workbench);
 ```

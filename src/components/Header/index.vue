@@ -1,7 +1,7 @@
 <template>
   <div class="workbench-header">
     <div class="logo">
-      <img :src="logo" alt="">
+      <img :src="logo" alt=""  v-if="logo">
     </div>
     <div class="workbench-menu" ref="menu">
       <div class="menubar">

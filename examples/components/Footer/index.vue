@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="left-items">
       <div id="status.host" class="statusbar-item has-background-color">
-        <i class="iconfont icon-a-lianjielianxi"></i> codingcorp.cloudstudio.net
+        <i class="iconfont icon-a-lianjielianxi"></i> https://www.fit2cloud.com/
       </div>
       <div class="statusbar-item"><i class="iconfont icon-cuowukongxin"></i> 0 <i
           class="iconfont icon-jinggao"></i> 0</div>
