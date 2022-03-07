@@ -6,7 +6,7 @@ f2c-workbench 是基于浏览器的工作台前端框架组件，提供可拖拽
 
 ## 安装
 ```
-npm install Workbench --save
+npm install f2c-workbench --save
 ```
 
 ## 引入
@@ -84,7 +84,7 @@ Vue.use(Workbench);
 ### Sidebar Attributes
   参数  |   说明   |   类型   | 可选值 |  默认值  
  ----- | -------- | :------: | :-------: | :------: 
- name     | 名称 | String | - | - 
+ name     | 名称 | String  | - | - 
  icon      | 图标（class） | String | - | - 
  hotkey    | 快捷键 | String | - | - 
  location    | 位置 | String | top / bottom | top  
@@ -96,7 +96,7 @@ Vue.use(Workbench);
 ### contextmenu Attributes
   参数  |   说明   |   类型   | 可选值 |  默认值  
  ----- | -------- | :------: | :-------: | :------: 
- id     | 唯一id | String ｜ - | - 
+ id  | 唯一id | String | - | - 
  label  | 名称 | String | - | - 
  key    | 快捷键 | String | - | - 
 
