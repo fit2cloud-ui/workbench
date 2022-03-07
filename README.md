@@ -99,6 +99,8 @@ Vue.use(Workbench);
  id  | 唯一id | String | - | - 
  label  | 名称 | String | - | - 
  key    | 快捷键 | String | - | - 
+ type   | 设置分割线(设置该属性，其他属性都失效) | String | divided | - 
+ iconClass    | 图标（class） | String | - | - 
 
 ### contextmenu Events
   事件名 |   说明   |  参数  
@@ -115,6 +117,5 @@ Vue.use(Workbench);
  id     | 文件唯一id | String | - | - 
  name   | 文件显示名称 | String | - | - 
  iconClass    | 图标（class） | String | - | - 
- icon    | 图标（url） | String | - | - 
  components   | 文件（文件名） | String | - | - 
 

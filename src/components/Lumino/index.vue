@@ -131,13 +131,15 @@ export default {
       if (this.contextmenu.length > 0) {
         let commands = new CommandRegistry();
         this.contextmenu.map((item) => {
-          commands.addCommand(item.id, item);
-          item.key &&
-            commands.addKeyBinding({
-              keys: [item.key],
-              selector: "body",
-              command: item.id,
-            });
+          if (item.type !== "divided") {
+            commands.addCommand(item.id, item);
+            item.key &&
+              commands.addKeyBinding({
+                keys: [item.key],
+                selector: "body",
+                command: item.id,
+              });
+          }
         });
         let menu = new ContextMenu({ commands: commands });
 
@@ -148,10 +150,17 @@ export default {
           }
         });
         this.contextmenu.forEach((item) => {
-          menu.addItem({
-            command: item.id,
-            selector: ".lm-TabBar-tab",
-          });
+          if (item.type === "divided") {
+            menu.addItem({
+              type: "separator",
+              selector: ".lm-TabBar-tab",
+            });
+          } else {
+            menu.addItem({
+              command: item.id,
+              selector: ".lm-TabBar-tab",
+            });
+          }
         });
       }
     },

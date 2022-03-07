@@ -202,6 +202,9 @@ export default {
           key: "Accel X",
         },
         {
+          type: "divided"
+        },
+        {
           id: "Copy File",
           label: "复制",
           execute: function () {

@@ -8,7 +8,7 @@
         padding-right: 5px;
 
         &:hover {
-            background: $workbench-color-primary-light-20;
+            background: $workbench-hover-color;
             color: $workbench-color-white;
         }
 
@@ -31,8 +31,12 @@
 
         @include e(icon) {
             margin-right: 2px;
-            margin-left: -2px;
+
             font-size: $workbench-size-base!important;
+        }
+
+        @include e(hotkey) {
+            color: $workbench-color-text-secondary;
         }
 
         @include e(submenuIcon) {

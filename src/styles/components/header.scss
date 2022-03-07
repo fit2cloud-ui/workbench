@@ -54,9 +54,11 @@
                     top: 30px;
                     left: 0;
                     z-index: 99;
-                    background: $workbench-color-primary-light-3;
+                    background: $workbench-color-primary-light-6;
+                    border: 1px solid $workbench-color-border-base;
+                    border-radius: 4px;
                     box-shadow: $workbench-box-shadow-base;
-                    padding: 5px 10px;
+                    padding: 5px;
                     color: $workbench-color-text-primary;
                 }
             }
