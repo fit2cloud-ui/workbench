@@ -118,9 +118,8 @@ export default {
           const name = newChild.$attrs[tabTitleProp]
             ? newChild.$attrs[tabTitleProp]
             : newChild.$options.name;
-          const icon = newChild.$attrs?.icon;
           const iconClass = newChild.$attrs?.iconClass;
-          this.addWidget(id, name, icon, iconClass);
+          this.addWidget({ id, name, iconClass });
           this.$nextTick(() => {
             document.getElementById(id).appendChild(newChild.$el);
           });
@@ -170,13 +169,13 @@ export default {
      *
      * @param id {String} - widget ID
      * @param name {String} - widget name
+     * @param iconClass {String} - widget iconClass
      */
-    addWidget(id, name, icon, iconClass) {
+    addWidget({ id, name, iconClass }) {
       this.widgets.push(id);
       const luminoWidget = new LuminoWidget(
         id,
         name,
-        icon,
         iconClass,
         /* closable */ true
       );
@@ -198,7 +197,6 @@ export default {
      * Activate a widget.
      *
      * @param id {String} - widget ID
-     * @param name {String} - widget name
      */
     activateWidget(id) {
       const luminoWidget = this.myLuminoWidget.filter(
@@ -214,6 +212,7 @@ export default {
      *   detail: {
      *     id: string,
      *     name: string,
+     *     iconClass: string,
      *     closable: boolean
      *   }
      * }}
@@ -229,6 +228,7 @@ export default {
      *   detail: {
      *     id: string,
      *     name: string,
+     *     iconClass: string,
      *     closable: boolean
      *   }
      * }}

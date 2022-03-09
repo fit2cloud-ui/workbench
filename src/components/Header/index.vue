@@ -14,9 +14,6 @@
             <menu-items :data="item.submenu" />
           </div>
         </div>
-        <!-- <div class="menubar-menu-button">
-          <i class="iconfont icon-shenglvehao"></i>
-        </div> -->
       </div>
     </div>
     <div class="window-title">{{title}}</div>

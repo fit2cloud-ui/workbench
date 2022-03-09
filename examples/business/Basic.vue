@@ -215,17 +215,11 @@ export default {
     };
   },
   mounted() {
-    // this.$nextTick(() => {
-    //   this.onAddClicked();
-    // });
   },
   computed: {
     helloWorldWidgets() {
       const widgets = [];
       for (const item of Object.values(this.widgets)) {
-        // if (type === HelloWorld.name) {
-        // widgets.push(id);
-        // }
         widgets.push(item);
       }
       return widgets;

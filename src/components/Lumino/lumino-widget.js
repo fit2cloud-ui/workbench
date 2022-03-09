@@ -34,15 +34,15 @@ export default class LuminoWidget extends Widget {
    * Create a LuminoWidget object.
    * @param id {string} unique ID of the widget
    * @param name {string} text displayed in the widget tab
+   * @param iconClass {string} icon displayed in the widget tab
    * @param closable {boolean} flag that controls whether the tab can be closed or not
    */
-  constructor(id, name, icon, iconClass, closable = true) {
+  constructor(id, name, iconClass, closable = true) {
     super({
       node: LuminoWidget.createNode(id)
     })
     this.id = id
     this.name = name
-    this.icon = icon
     this.iconClass = iconClass
     this.closable = closable
     // classes and flags
@@ -50,7 +50,6 @@ export default class LuminoWidget extends Widget {
     this.addClass('content')
     // tab title
     this.title.label = name
-    this.title.icon = icon
     this.title.iconClass = iconClass
     this.title.dataset.id = id
     this.title.closable = closable
@@ -88,7 +87,7 @@ export default class LuminoWidget extends Widget {
    * Event details returned for a `CustomEvent`.
    *
    * @link https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events
-   * @returns {{closable: boolean, name: string, id: string, icon: url, iconClass: string}}
+   * @returns {{closable: boolean, name: string, id: string, iconClass: string}}
    * @private
    */
   _getEventDetails() {
@@ -96,7 +95,6 @@ export default class LuminoWidget extends Widget {
       detail: {
         id: this.id,
         name: this.name,
-        icon: this.icon,
         iconClass: this.iconClass,
         closable: this.closable
       }
