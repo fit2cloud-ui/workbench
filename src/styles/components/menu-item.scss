@@ -29,10 +29,17 @@
             position: relative;
         }
 
-        @include e(icon) {
+        @include e(setIcon) {
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
             margin-right: 2px;
+            font-size: $workbench-size-base !important;
 
-            font-size: $workbench-size-base!important;
+            &:before {
+                content: "✓";
+
+            }
+
         }
 
         @include e(hotkey) {
@@ -40,7 +47,15 @@
         }
 
         @include e(submenuIcon) {
-            font-size: $workbench-size-base;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            // font-size: 12px;
+
+            &:before {
+                content: "➤";
+
+            }
+
         }
 
         @include b(menu-subItem) {

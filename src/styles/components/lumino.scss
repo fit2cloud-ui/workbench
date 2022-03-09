@@ -1,14 +1,12 @@
 @include b(lumino) {
   #main {
     display: flex;
-    // min-height: calc(100vh - 48px);
     .content {
       min-width: 50px;
       min-height: 50px;
       display: flex;
       flex-direction: column;
       padding: 0;
-      // border: 1px solid #C0C0C0;
       border-top: none;
       position: relative;
       overflow: auto;
@@ -58,8 +56,7 @@
           }
 
           &:before {
-            content: "\e60e";
-            font-family: "iconfont"
+            content: "✕";
           }
         }
       }

@@ -57,11 +57,8 @@
 </template>
 
 <script>
-import "@/styles/index.scss";
-/* ions */
-import "@/assets/iconfont/iconfont.css";
 import "@/components";
-import "@lumino/default-theme/style/index.css";
+
 export default {
   name: "Workbench",
   props: {

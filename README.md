@@ -12,7 +12,7 @@ npm install f2c-workbench --save
 ## 引入
 ```
 import Workbench from "f2c-workbench"
-import "f2c-workbench/lib/workbench.css";
+@import "f2c-workbench/src/styles/index.scss";
 
 Vue.use(Workbench);
 ```

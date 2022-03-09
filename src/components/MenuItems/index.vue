@@ -4,11 +4,11 @@
       @click="subMclick($event, item)" :class="item.divided ? 'border-bottom': ''"
       @mouseenter="mouseenter($event, item, index)" @mouseleave="isOpen=''">
       <div class="workbench-menu-item__label">
-        <i class="workbench-menu-item__icon iconfont icon-duigou"
+        <i class="workbench-menu-item__setIcon"
           :style="{visibility: item.isSet?'visible':'hidden'}"></i>{{item.name}}
       </div>
       <div class="workbench-menu-item__right">
-        <i class="workbench-menu-item__submenuIcon iconfont icon-youjiantou" v-if="item.submenu"></i>
+        <i class="workbench-menu-item__submenuIcon" v-if="item.submenu"></i>
         <div class="workbench-menu-item__hotkey" v-else-if="item.hotkey">{{item.hotkey}}</div>
         <menu-items v-if="item.submenu && (isOpen===(item.name+index))" :data="item.submenu"
           class="workbench-menu-subItem" />

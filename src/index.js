@@ -1,5 +1,4 @@
 import Workbench from './Workbench'
-
 const plugin = {
   install: function (Vue) {
     Vue.component(Workbench.name, Workbench)
