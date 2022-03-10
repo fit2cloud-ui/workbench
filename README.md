@@ -29,7 +29,7 @@ Vue.use(Workbench);
 
 ## 使用
 
-```sh
+```js
 <workbench ref="workbench" :title="title">
 
 </workbench>
