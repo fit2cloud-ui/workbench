@@ -86,12 +86,12 @@ Vue.use(Workbench);
  ----- | -------- | :------: | :-------: | :------: 
  name     | 名称 | String  | - | - 
  icon      | 图标（class） | String | - | - 
- hotkey    | 快捷键 | String（如果有submenu，该属性失效） | - | - 
+ hotkey    | 快捷键 | String | - | - 
  location    | 位置 | String | top / bottom | top  
  component    | 要展开的组件 | String | - | - 
  ...(component) | component组件里的所有属性和事件 | - | - | - 
  type   | 触发后的方式 | String | popover / - | - 
- submenu   | 子菜单（如果是popover方式时使用；如果有hotkey，该属性失效） | Array | （同头部子菜单属性） | - 
+ submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
 
 ### contextmenu Attributes
   参数  |   说明   |   类型   | 可选值 |  默认值  
