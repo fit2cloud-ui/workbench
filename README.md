@@ -6,13 +6,13 @@ f2c-workbench 是基于浏览器的工作台前端框架组件，提供可拖拽
 
 ## 安装
 ```
-npm install f2c-workbench --save
+npm install f2c-workbench
 ```
 
 ## 引入
 ```
 import Workbench from "f2c-workbench"
-@import "f2c-workbench/src/styles/index.scss";
+import "f2c-workbench/src/styles/index.scss";
 
 Vue.use(Workbench);
 ```

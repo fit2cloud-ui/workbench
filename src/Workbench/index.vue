@@ -7,8 +7,7 @@
       <div class="workbench__main">
         <div class="workbench__aside">
           <Sidebar :data="sidebar" @change="sidebarChange">
-            <slot name="sidebar">
-            </slot>
+            <slot name="sidebar"></slot>
           </Sidebar>
         </div>
         <div class="workbench__content">
