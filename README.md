@@ -5,19 +5,31 @@ f2c-workbench 是基于浏览器的工作台前端框架组件，提供可拖拽
 在线预览网址：https://fit2cloud-ui.github.io/workbench
 
 ## 安装
-```
+
+推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。
+
+```sh
 npm install f2c-workbench
 ```
 
-## 引入
+因为需要使用scss，所以需要安装sass，(sass-loader要求11以下)
+
+```sh
+npm install -D sass-loader@10.1.0 sass@1.43.4
 ```
+
+## 引入
+
+```js
 import Workbench from "f2c-workbench"
 import "f2c-workbench/src/styles/index.scss";
 
 Vue.use(Workbench);
 ```
+
 ## 使用
-```
+
+```sh
 <workbench ref="workbench" :title="title">
 
 </workbench>
