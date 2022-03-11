@@ -3,10 +3,10 @@
     <slot>
       <div class="content">
         <div class="top-bar">
-          <siderbar-item :data="topData" @change="change" />
+          <sidebar-item :data="topData" @change="change" />
         </div>
         <div class="bottom-bar">
-          <siderbar-item :data="bottomData" @change="change" />
+          <sidebar-item :data="bottomData" @change="change" />
         </div>
       </div>
     </slot>
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import SiderbarItem from "./SiderbarItem";
+import SidebarItem from "./SidebarItem";
 export default {
   name: "Sidebar",
   components: {
-    SiderbarItem,
+    SidebarItem,
   },
   props: {
     data: {

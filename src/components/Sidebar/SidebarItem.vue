@@ -1,15 +1,15 @@
 <template>
-  <ul class="workbench-siderbar-item">
+  <ul class="workbench-sidebar-item">
     <template v-for="(item, index) in data">
       <popper v-if="item.type==='popover'" trigger="clickToOpen" :options="{ placement: 'right' }"
         :key="index">
-        <div class="workbench-siderbar-item__popover">
+        <div class="workbench-sidebar-item__popover">
           <menu-items :data="item.submenu" />
         </div>
         <li class="action-item" slot="reference" :class="getClassName(item, index)" draggable="true"
           @click="handleClick(item, index)">
           <a :title="getName(item)">
-            <i :class="item.icon" class="workbench-siderbar-item__icon"></i></a>
+            <i :class="item.icon" class="workbench-sidebar-item__icon"></i></a>
 
         </li>
       </popper>
@@ -17,7 +17,7 @@
         :class="getClassName(item, index)" draggable="true" @click="handleClick(item, index)">
 
         <a :title="getName(item)">
-          <i :class="item.icon" class="workbench-siderbar-item__icon"></i></a>
+          <i :class="item.icon" class="workbench-sidebar-item__icon"></i></a>
 
       </li>
     </template>
@@ -29,7 +29,7 @@
 import Popper from "vue-popperjs";
 import "vue-popperjs/dist/vue-popper.css";
 export default {
-  name: "SiderbarItem",
+  name: "SidebarItem",
   components: {
     Popper,
   },

@@ -30,7 +30,7 @@ export default {
     },
     title: {
       type: String,
-      default: "欢迎使用",
+      default: "",
     },
     menu: {
       type: Array,

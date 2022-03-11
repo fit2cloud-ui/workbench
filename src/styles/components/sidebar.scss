@@ -19,7 +19,7 @@
         box-sizing: border-box;
     }
 
-    @include b(siderbar-item) {
+    @include b(sidebar-item) {
         @include e(icon) {
             font-size: 24px !important;
         }
