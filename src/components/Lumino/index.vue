@@ -1,8 +1,6 @@
 <template>
   <div class="workbench-lumino" id="workflow-panel">
-    <div ref="main" id="main" class="pa-4 fill-height" :style="{'min-height': minHeight}">
-
-    </div>
+    <div ref="main" id="main" class="pa-4 fill-height" :style="{'min-height': minHeight}"></div>
     <div v-show="false">
       <slot></slot>
     </div>
