@@ -6,19 +6,19 @@
         background: '#0070c8'
       }">
       <!-- 侧边栏 -->
-      <div slot="sidebar" class="sidebar">
+      <template v-slot:sidebar class="sidebar">
         <el-button icon="el-icon-search" circle size="mini" type="primary" @click="sidebarClick">
         </el-button>
-      </div>
-      <div slot="sidebar-components">
+      </template>
+      <template v-slot:sidebar-components>
         <component :is="customSidebarCon" :name="'资源管理器'" @click="treeClick"></component>
-      </div>
+      </template>
       <component v-for="item in this.helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name">
       </component>
-      <div slot="footer">
+      <template v-slot:footer>
         <Footer />
-      </div>
+      </template>
     </workbench>
   </div>
 </template>

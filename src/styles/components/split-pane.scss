@@ -76,16 +76,23 @@
 
   @include e(line) {
     position: absolute;
-    background: $workbench-color-border-base;    z-index: 1;
+    background: $workbench-color-border-base;
+    z-index: 1;
 
     &:hover {
-      background: $workbench-hover-color!important;
+      background: $workbench-hover-color !important;
+
       @include when(horizontal) {
         width: 4px;
       }
+
       @include when(vertical) {
         height: 4px;
       }
+    }
+
+    &.noneBg {
+      background: none;
     }
 
     @include when(horizontal) {

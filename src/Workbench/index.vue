@@ -13,31 +13,33 @@
         <div class="workbench__content">
           <split-pane :left="left" min="1" resizer-type="line" :resizer-style="{background:'none'}"
             local-key="WB-split-left">
-            <div slot="left" class="workbench__split-pane left">
-              <slot name="sidebar-components">
-                <component :is="currentComponents" v-bind="currentSidebar" v-on="currentSidebar">
-                </component>
-              </slot>
-            </div>
-            <div slot="right" class="workbench__split-pane right" @drop="drop($event)"
-              @dragover.prevent>
-              <split-pane :bottom="bottom" min="1" direction="vertical" resizer-type="line"
-                local-key="WB-split-bottom"
-                :resizer-style="{background: bottom > 1?'rgba(128, 128, 128, 0.35)':'none'}"
-                @changeSplit="changeSplit">
-                <div slot="top">
-                  <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
-                    v-on:lumino:activated="onWidgetActivatedEvent"
-                    v-on:lumino:contextmenu="onWidgetContextmenuEvent" tab-title-prop="tab-title"
-                    :height="bottom" :contextmenu="contextmenu">
-                    <slot></slot>
-                  </Lumino>
-                </div>
-                <div slot="bottom">
-                  <slot name="bottom-panel"></slot>
-                </div>
-              </split-pane>
-            </div>
+            <template v-slot:left>
+              <div class="workbench__split-pane left">
+                <slot name="sidebar-components">
+                  <component :is="currentComponents" v-bind="currentSidebar" v-on="currentSidebar">
+                  </component>
+                </slot>
+              </div>
+            </template>
+            <template v-slot:right>
+              <div class="workbench__split-pane right" @drop="drop($event)" @dragover.prevent>
+                <split-pane :bottom="bottom" min="1" direction="vertical" resizer-type="line"
+                  local-key="WB-split-bottom" :resizer-class="bottom<=1 && 'noneBg'"
+                  @changeSplit="changeSplit">
+                  <template v-slot:top>
+                    <Lumino ref="lumino" v-on:lumino:deleted="onWidgetDeletedEvent"
+                      v-on:lumino:activated="onWidgetActivatedEvent"
+                      v-on:lumino:contextmenu="onWidgetContextmenuEvent" tab-title-prop="tab-title"
+                      :height="bottom" :contextmenu="contextmenu">
+                      <slot></slot>
+                    </Lumino>
+                  </template>
+                  <template v-slot:bottom>
+                    <slot name="bottom-panel"></slot>
+                  </template>
+                </split-pane>
+              </div>
+            </template>
           </split-pane>
         </div>
       </div>

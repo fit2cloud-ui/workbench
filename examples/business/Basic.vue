@@ -7,12 +7,12 @@
       <component v-for="item in helloWorldWidgets" :key="item.id" :id="item.id"
         :is="item.components" :tab-title="item.name" :iconClass="item.iconClass">
       </component>
-      <div slot="bottom-panel">
+      <template v-slot:bottom-panel>
         <Terminal @close="closeTerminal" />
-      </div>
-      <div slot="footer">
+      </template>
+      <template v-slot:footer>
         <Footer />
-      </div>
+      </template>
     </workbench>
   </div>
 </template>
