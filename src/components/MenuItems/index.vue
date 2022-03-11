@@ -2,7 +2,7 @@
   <ul class="workbench-menu-items" id="menu-items-ul">
     <li class="workbench-menu-item" v-for="(item, index) in data" :key="index"
       @click="subMclick($event, item)" :class="item.divided ? 'border-bottom': ''"
-      @mouseenter="mouseenter($event, item, index)" @mouseleave="isOpen=''">
+      @mouseenter="mouseenter($event, item, index)">
       <div class="workbench-menu-item__label">
         <i class="workbench-menu-item__setIcon"
           :style="{visibility: item.isSet?'visible':'hidden'}"></i>{{item.name}}
@@ -35,7 +35,9 @@ export default {
     mouseenter(e, item, index) {
       e.stopPropagation();
       if (item?.submenu) {
-        this.isOpen = item.name + index;
+        setTimeout(() => {
+          this.isOpen = item.name + index;
+        }, 200);
       }
     },
     subMclick(e, item) {
@@ -50,5 +52,4 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
-
 </style>
