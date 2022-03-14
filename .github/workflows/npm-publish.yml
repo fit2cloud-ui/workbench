@@ -4,10 +4,10 @@ name: Workbench Publish
 
 on:
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
-   publish-npm:
+  publish-npm:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
