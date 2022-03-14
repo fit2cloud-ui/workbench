@@ -34,7 +34,7 @@ jobs:
         with:
           repository-name: workbench/docs
           target-folder: docs
-          branch: main
+          branch: master
           folder: docs
           token: ${{secrets.ACCESS_TOKEN}}
           commit-message: github action update docs
