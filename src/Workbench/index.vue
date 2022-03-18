@@ -79,6 +79,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    visibleLeftPanel: {
+      type: Boolean,
+      default: false,
+    },
     contextmenu: {
       type: Array,
       default: () => [],
@@ -105,14 +109,14 @@ export default {
         this.bottom = 1;
       }
     },
+    visibleLeftPanel(val) {
+      this.isShowLeft(val);
+    },
   },
   computed: {},
-  updated() {
-    this.isShowLeft();
-  },
   methods: {
-    isShowLeft() {
-      if (this.$slots["sidebar-components"] || this.currentComponents) {
+    isShowLeft(val) {
+      if (val) {
         const localHorizontal = JSON.parse(
           localStorage.getItem("workbench-SP-WB-split-left")
         );
@@ -128,7 +132,7 @@ export default {
       if (item.type !== "popover") {
         this.currentComponents = item?.components || "";
         this.currentSidebar = item || "";
-        this.isShowLeft();
+        this.isShowLeft(this.currentComponents);
       }
 
       this.$emit("changeSidebar", item);
