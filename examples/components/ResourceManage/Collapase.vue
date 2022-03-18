@@ -46,7 +46,7 @@ export default {
                   id: "1-1-1",
                   name: "三级 1-1-1",
                   iconClass: "iconfont icon-jinggao",
-                  components: "HelloWorld",
+                  components: () => import("../HelloWorld.vue"),
                 },
               ],
             },
@@ -58,12 +58,12 @@ export default {
             {
               id: "2-1",
               name: "二级 2-1",
-              components: "HelloWorld",
+              components: () => import("../HelloWorld.vue"),
             },
             {
               id: "2-2",
               name: "二级 2-2",
-              components: "HelloWorld",
+              components: () => import("../HelloWorld.vue"),
             },
           ],
         },
@@ -76,7 +76,7 @@ export default {
                 {
                   id: "3-1-1",
                   name: "三级 3-1-1",
-                  components: "HelloWorld",
+                  components: () => import("../HelloWorld.vue"),
                 },
               ],
             },

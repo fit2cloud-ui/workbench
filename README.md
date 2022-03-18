@@ -47,6 +47,7 @@ Vue.use(Workbench);
  footerClass | 定义footer ClassName | String | - | -
  footerStyle | 定义footer Style | Object | - | -
  :visible-bottom-panel | 内容面板是否显示bottom面板（终端面板） | Boolean | - | false
+ :visible-left-panel | 自定义的状态下控制左侧面板是否展开 | Boolean | - | false
  contextmenu | 内容面板右键tab时菜单 | Array | - | -
 
 ### Events
@@ -100,7 +101,7 @@ Vue.use(Workbench);
  icon      | 图标（class） | String | - | - 
  hotkey    | 快捷键 | String | - | - 
  location    | 位置 | String | top / bottom | top  
- component    | 要展开的组件 | String | - | - 
+ component    | 要展开的组件 | Component  | - | - 
  ...(component) | component组件里的所有属性和事件 | - | - | - 
  type   | 触发后的方式 | String | popover / - | - 
  submenu   | 子菜单（如果是popover方式时使用） | Array | （同头部子菜单属性） | - 
@@ -129,5 +130,5 @@ Vue.use(Workbench);
  id     | 文件唯一id | String | - | - 
  name   | 文件显示名称 | String | - | - 
  iconClass    | 图标（class） | String | - | - 
- components   | 文件（文件名） | String | - | - 
+ components   | 文件 | Component | - | - 
 

@@ -4,11 +4,14 @@
       @activated="onWidgetActivatedEvent" @deleted="onWidgetDeletedEvent" @drop="drop"
       :footer-style="{
         background: '#0070c8'
-      }">
+      }"
+      :visible-left-panel="visibleLeft">
       <!-- 侧边栏 -->
-      <template v-slot:sidebar class="sidebar">
-        <el-button icon="el-icon-search" circle size="mini" type="primary" @click="sidebarClick">
-        </el-button>
+      <template v-slot:sidebar>
+        <div class="sidebar">
+          <el-button icon="el-icon-search" circle size="mini" type="primary" @click="sidebarClick">
+          </el-button>
+        </div>
       </template>
       <template v-slot:sidebar-components>
         <component :is="customSidebarCon" :name="'资源管理器'" @click="treeClick"></component>
@@ -25,13 +28,11 @@
 
 <script>
 import myLogo from "../assets/logo.png";
-import HelloWorld from "../components/HelloWorld";
 import ResourceManage from "../components/ResourceManage";
 import Footer from "../components/Footer";
 export default {
   name: "Custom",
   components: {
-    HelloWorld,
     Footer,
   },
 
@@ -117,6 +118,7 @@ export default {
       ],
       customSidebarCon: "",
       widgets: {},
+      visibleLeft: false
     };
   },
   mounted() {},
@@ -132,6 +134,7 @@ export default {
   methods: {
     sidebarClick() {
       this.customSidebarCon = ResourceManage;
+      this.visibleLeft = !this.visibleLeft
     },
     drop() {
       this.onClicked(this.dragElement);
